@@ -69,22 +69,22 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="widthLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="widthTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="widthTextField" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="horizontalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="rangeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="x0Spinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="x0Spinner" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="x1Spinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="x1Spinner" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="verticalLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="y0Spinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="y0Spinner" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="y1Spinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="y1Spinner" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
