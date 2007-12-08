@@ -47,7 +47,6 @@ import sgf.property.GameInfoProperty;
 
 public class PlayerInfoPanel extends JPanel implements ComponentListener, GoGameListener {
 
-    private static final String INFO = "情報";
     private static final int PANEL_HEIGHT = 60;
     private static final Color BGCOLOR0 = new Color(0xf5, 0xf5, 0xdc);
     private static final Color BGCOLOR1 = new Color(0xff, 0xdd, 0xff);
