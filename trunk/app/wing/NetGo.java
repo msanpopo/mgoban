@@ -19,7 +19,6 @@
 package app.wing;
 
 import go.gui.InputList;
-import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import javax.swing.JFrame;
@@ -47,11 +46,7 @@ public class NetGo implements ComponentListener{
         
         window = new WingWindow(this);
         window.setVisible(true);
-        window.addComponentListener(new ComponentAdapter(){
-            public void componentHidden(ComponentEvent e){
-                close();
-            }
-        });
+        window.addComponentListener(this);
         
         gameObjectManager = new GameObjectManager(this);
         server.addReceiver(gameObjectManager);

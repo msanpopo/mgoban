@@ -81,6 +81,7 @@ public class GameObject implements  InputListener, ComponentListener, MessageRec
     
     public GameObject(NetGo netGo, int gameNo, String bName, String wName, GameObjectManager gom, String myName){
         this.netGo = netGo;
+        this.netGo.getWindow().addComponentListener(this);
         
         this.game = null;
         this.gameNo = gameNo;
@@ -100,6 +101,7 @@ public class GameObject implements  InputListener, ComponentListener, MessageRec
     // 対局を「開く」した時
     public GameObject(NetGo netGo, Game game, GameObjectManager gom, String myName){
         this.netGo = netGo;
+        this.netGo.getWindow().addComponentListener(this);
         
         this.game = game;
         this.gameNo = game.getGameNo();
@@ -502,15 +504,22 @@ public class GameObject implements  InputListener, ComponentListener, MessageRec
     
     // ComponentListener
     public void componentHidden(ComponentEvent e) {
-        if(type == TYPE_GAME){
+        if (e.getSource() == gw) {
+            System.out.println("GameObject.componentHidden:WingGoWindow");
+            if (type == TYPE_GAME) {
             // 何もしない
-        }else if(type == TYPE_OBSERVE){
-            netGo.sendCommand("unobserve " + game.getGameNo());
+            } else if (type == TYPE_OBSERVE) {
+                netGo.sendCommand("unobserve " + game.getGameNo());
+            }
+
+            gameObjectManager.removeGameObject(this);
+            netGo.getServer().removeReceiver(this);
+            gw = null;
+        }else if(e.getSource() == netGo.getWindow()){
+            System.out.println("GameObject.componentHidden:WingWindow");
+            // gw を閉じるのは GoGame が担当する（わかりにくすぎる） TODO
+            //gw.setVisible(false);
         }
-        
-        gameObjectManager.removeGameObject(this);
-        netGo.getServer().removeReceiver(this);
-        gw = null;
     }
     public void componentMoved(ComponentEvent e) {}
     public void componentResized(ComponentEvent e) {}
