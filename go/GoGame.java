@@ -71,6 +71,8 @@ public class GoGame implements GameTreeListener, ComponentListener, GoClockListe
     
     private void init(JFrame owner){
         this.owner = owner;
+        this.owner.addComponentListener(this);
+        
         this.board = new GoBoard(19);
         this.tree = new GameTree();
         
@@ -249,11 +251,11 @@ public class GoGame implements GameTreeListener, ComponentListener, GoClockListe
     
     public void componentHidden(ComponentEvent e) {
         if(e.getSource() == window){
-            System.out.println("GoGame.componentHidden");
+            System.out.println("GoGame.componentHidden: go window");
             owner.removeComponentListener(this);
         }else if(e.getSource() == owner){
             // 親が閉じられた
-            System.out.println("GoGame.componentHidden: parent hidden");
+            System.out.println("GoGame.componentHidden: main window");
             window.setVisible(false);
         }
         
