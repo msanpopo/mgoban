@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.3" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="boardSizeLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="komiLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="handicapLabel" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="komiSpinner" min="-2" pref="85" max="-2" attributes="1"/>
+                  <Component id="boardSizeSpinner" alignment="0" min="-2" pref="85" max="-2" attributes="1"/>
+                  <Component id="handicapSpinner" alignment="0" min="-2" pref="85" max="-2" attributes="1"/>
+              </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="boardSizeSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="boardSizeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="handicapSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="handicapLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="komiSpinner" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="komiLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="boardSizeLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Board Size :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="komiLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Komi :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="handicapLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Handicap :"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="komiSpinner">
+    </Component>
+    <Component class="javax.swing.JSpinner" name="boardSizeSpinner">
+    </Component>
+    <Component class="javax.swing.JSpinner" name="handicapSpinner">
+    </Component>
+  </SubComponents>
+</Form>
