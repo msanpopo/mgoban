@@ -19,22 +19,15 @@
 package app;
 
 import app.App;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
 import javax.swing.JFrame;
-
-import app.wing.LoginDialog;
 
 public class MainWindow extends JFrame {
     private static final String NET_GO = "ネット対局";
     private static final String LOCAL_GO = "ローカル碁盤";
     private static final String QUIT = "終了";
     
-    private LoginDialog loginDialog;
-    
     public MainWindow() {
-        loginDialog = null;
         
         initComponents();
         
@@ -130,10 +123,7 @@ public class MainWindow extends JFrame {
         
     private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
         System.out.println("MainWindow Hidden");
-        if(loginDialog != null){
-            loginDialog.setVisible(false);
-        }
-        
+
         dispose();
     }//GEN-LAST:event_formComponentHidden
     
@@ -148,19 +138,7 @@ public class MainWindow extends JFrame {
     }//GEN-LAST:event_formWindowClosing
     
     private void netGoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_netGoButtonActionPerformed
-        if(loginDialog == null){
-            loginDialog = new LoginDialog(this);
-            loginDialog.setVisible(true);
-            loginDialog.addWindowListener(new WindowAdapter(){
-                @Override
-                public void windowClosed(WindowEvent e){
-                    System.out.println(this.getClass() + ":LoginDialog Closed");
-                    loginDialog = null;
-                }
-            });
-        }else{
-            loginDialog.toFront();
-        }
+        App.getInstance().startNetGo(this);
     }//GEN-LAST:event_netGoButtonActionPerformed
         
     private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitButtonActionPerformed

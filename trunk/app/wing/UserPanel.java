@@ -200,6 +200,10 @@ public class UserPanel extends javax.swing.JPanel implements MessageReceiver, Ac
         return (WingUser)userTable.getValueAt(i, 0);
     }
     
+    public void connected(boolean bool){
+        refreshButton.setEnabled(bool);
+    }
+    
     // <editor-fold defaultstate="collapsed" desc=" Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
         popupMenu = new javax.swing.JPopupMenu();

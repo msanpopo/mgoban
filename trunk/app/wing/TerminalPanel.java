@@ -33,9 +33,8 @@ public class TerminalPanel extends JPanel implements InputListener, MessageRecei
     
     private InOutPanel inOutPanel;
     
-    public TerminalPanel(NetGo netGo){
-        this.netGo = netGo;
-        this.netGo.getServer().addReceiver(this);
+    public TerminalPanel(){
+        this.netGo = null;
         
         inOutPanel = new InOutPanel();
         inOutPanel.setInputListener(this);
@@ -44,10 +43,18 @@ public class TerminalPanel extends JPanel implements InputListener, MessageRecei
         add(inOutPanel, BorderLayout.CENTER);
     }
     
+    public void setNetGo(NetGo netGo){
+        this.netGo = netGo;
+    }
+    
     public void textInputed(Object source, String text) {
         // System.out.println("textInputed : " + text);
-        inOutPanel.addText("##### send command ### :" + text + ":");
-        netGo.sendCommand(text);
+        if(netGo != null){
+            inOutPanel.addText("##### send command ### :" + text + ":");
+            netGo.sendCommand(text);
+        }else{
+            System.err.println("error:TerminalPanel.textInputed: netGo == null");
+        }
     }
     
     public void receive(Message wm) {

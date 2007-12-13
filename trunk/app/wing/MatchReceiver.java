@@ -23,7 +23,6 @@ import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.ArrayList;
 
-import app.wing.MatchSettingDialog;
 import wing.MessageReceiver;
 import wing.message.CreatingMatchMessage;
 import wing.message.DeclineMatchMessage;
