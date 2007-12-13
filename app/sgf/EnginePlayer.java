@@ -75,10 +75,12 @@ public class EnginePlayer extends GtpPlayer implements GtpReceiver{
     public void genMove(GoClock clock){
         window.setOperator(null, nullOperation);
 
-        int time = (int)clock.getSeconds(color);
-        int stone = clock.getStones(color);
+        if(clock.isNoTimeLimit() == false){
+            int time = (int)clock.getSeconds(color);
+            int stone = clock.getStones(color);
         
-        gtp.timeLeft(color, time, stone);
+            gtp.timeLeft(color, time, stone);
+        }
         gtp.genMove(color);
     }
     

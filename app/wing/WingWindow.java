@@ -28,6 +28,7 @@ import app.wing.TerminalPanel;
 import app.wing.LookingOpenPanel;
 import go.gui.TabPanel;
 import app.wing.UserPanel;
+import app.wing.action.ConnectAction;
 import java.awt.BorderLayout;
 import java.awt.Component;
 import java.awt.Font;
@@ -68,6 +69,7 @@ public class WingWindow extends javax.swing.JFrame implements ActionListener, Me
     private static final String SAY = "対局";
     private static final String KIBITZ = "観戦";
     private NetGo netGo;
+    private TerminalPanel terminalPanel;
     private LookingOpenPanel lookingOpenPanel;
     private GameTableModel gameModel;
     private TableRowSorter<GameTableModel> gameSorter;
@@ -78,6 +80,7 @@ public class WingWindow extends javax.swing.JFrame implements ActionListener, Me
     public WingWindow(NetGo netGo) {
         this.netGo = netGo;
 
+        this.terminalPanel = new TerminalPanel();
         this.lookingOpenPanel = new LookingOpenPanel(netGo);
         this.gameModel = new GameTableModel();
         this.tabPanel = new TabPanel();
@@ -85,7 +88,7 @@ public class WingWindow extends javax.swing.JFrame implements ActionListener, Me
 
         this.refreshing = false;
         
-        this.tabPanel.addTab(TERMINAL, new TerminalPanel(netGo), true);
+        this.tabPanel.addTab(TERMINAL, terminalPanel, true);
 
         initComponents();
 
@@ -94,7 +97,7 @@ public class WingWindow extends javax.swing.JFrame implements ActionListener, Me
         editTextMenuItem.setText(EDIT_TEXT);
 
         lookingOpenPanelBase.setLayout(new BorderLayout());
-        lookingOpenPanelBase.add(new LookingOpenPanel(netGo), BorderLayout.CENTER);
+        lookingOpenPanelBase.add(lookingOpenPanel, BorderLayout.CENTER);
 
         JMenuItem itemOpen = new JMenuItem(OPEN_GAME);
         itemOpen.addActionListener(this);
@@ -124,9 +127,10 @@ public class WingWindow extends javax.swing.JFrame implements ActionListener, Me
         itemClose.addActionListener(this);
 
         fileMenu.add(itemClose);
-
-        netGo.getServer().addReceiver(this);
-
+        
+        connectToggleButton.setAction(new ConnectAction(netGo));
+        
+        connected(false);
     }
 
     class MonoCellRenderer implements TableCellRenderer {
@@ -184,6 +188,8 @@ public class WingWindow extends javax.swing.JFrame implements ActionListener, Me
     }
 
     public void receive(Message wm) {
+        terminalPanel.receive(wm);
+        
         if (wm instanceof DeclareMessage) {
             DeclareMessage m = (DeclareMessage) wm;
 
@@ -278,6 +284,12 @@ public class WingWindow extends javax.swing.JFrame implements ActionListener, Me
         netGo.sendCommand("games");
     }
 
+    public void connected(boolean bool){
+        gameRefreshButton.setEnabled(bool);
+        lookingOpenPanel.connected(bool);
+        userPanel.connected(bool);
+    }
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -292,6 +304,8 @@ public class WingWindow extends javax.swing.JFrame implements ActionListener, Me
         jScrollPane1 = new javax.swing.JScrollPane();
         gameTable = new javax.swing.JTable();
         lookingOpenPanelBase = new javax.swing.JPanel();
+        jToolBar2 = new javax.swing.JToolBar();
+        connectToggleButton = new javax.swing.JToggleButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         toolMenu = new javax.swing.JMenu();
@@ -391,13 +405,30 @@ public class WingWindow extends javax.swing.JFrame implements ActionListener, Me
             .addGap(0, 32, Short.MAX_VALUE)
         );
 
+        jToolBar2.setFloatable(false);
+        jToolBar2.setRollover(true);
+
+        connectToggleButton.setText("Connect");
+        connectToggleButton.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        connectToggleButton.setFocusPainted(false);
+        connectToggleButton.setFocusable(false);
+        connectToggleButton.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        connectToggleButton.setMaximumSize(new java.awt.Dimension(100, 28));
+        connectToggleButton.setMinimumSize(new java.awt.Dimension(28, 28));
+        connectToggleButton.setOpaque(false);
+        connectToggleButton.setPreferredSize(new java.awt.Dimension(50, 28));
+        connectToggleButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar2.add(connectToggleButton);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lookingOpenPanelBase, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 208, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
         );
@@ -405,8 +436,9 @@ public class WingWindow extends javax.swing.JFrame implements ActionListener, Me
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lookingOpenPanelBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lookingOpenPanelBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE))
         );
@@ -498,7 +530,9 @@ public class WingWindow extends javax.swing.JFrame implements ActionListener, Me
         sayPanel.write();
         kibitzPanel.write();
 }//GEN-LAST:event_editTextMenuItemActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton connectToggleButton;
     private javax.swing.JMenuItem editTextMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JPopupMenu gamePopupMenu;
@@ -510,6 +544,7 @@ public class WingWindow extends javax.swing.JFrame implements ActionListener, Me
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JSplitPane jSplitPane2;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JToolBar jToolBar2;
     private javax.swing.JPanel lookingOpenPanelBase;
     private javax.swing.JPanel tabPanelBase;
     private javax.swing.JMenu toolMenu;

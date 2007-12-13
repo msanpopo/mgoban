@@ -20,6 +20,7 @@ package app;
 import app.sgf.SgfActionList;
 import app.sgf.SgfGoGame;
 import app.sgf.SgfGoWindow;
+import app.wing.NetGo;
 import go.GoColor;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
@@ -147,7 +148,6 @@ public class App {
 
     public void startEditor(JFrame owner, File sgfFile) {
         int boardSize = 19;
-        int handicap = 0;
         double komi = 6.5;
 
         GoNode root = GoNode.createRootNode(boardSize);
@@ -183,6 +183,11 @@ public class App {
 
     public void startEditor(JFrame owner) {
         startEditor(owner, null);
+    }
+    
+    public void startNetGo(JFrame owner){
+        NetGo netGo = new NetGo();
+        owner.addComponentListener(netGo);
     }
     
     public Config getConfig(){

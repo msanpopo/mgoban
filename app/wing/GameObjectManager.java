@@ -32,7 +32,6 @@ public class GameObjectManager implements MessageReceiver{
     
     public GameObjectManager(NetGo netGo){
         this.netGo = netGo;
-        
         this.gameObjectList = new ArrayList<GameObject>();
     }
     
