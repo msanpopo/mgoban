@@ -46,7 +46,7 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableRowSorter;
-import wing.Game;
+import wing.WingGame;
 import wing.MessageReceiver;
 import wing.message.DeclareMessage;
 import wing.message.GamesMessage;
@@ -174,7 +174,7 @@ public class WingWindow extends javax.swing.JFrame implements ActionListener, Me
             }
             
             int modelRow = gameTable.convertRowIndexToModel(index);
-            Game game = gameModel.getGame(modelRow);
+            WingGame game = gameModel.getGame(modelRow);
             if (game == null) {
                 return;
             }
@@ -218,7 +218,7 @@ public class WingWindow extends javax.swing.JFrame implements ActionListener, Me
             if (refreshing == true) {
                 GamesMessage m = (GamesMessage) wm;
 
-                Collection<Game> gameSet = m.getGameCollection();
+                Collection<WingGame> gameSet = m.getGameCollection();
 
                 gameModel.setGame(gameSet);
 
@@ -494,7 +494,7 @@ public class WingWindow extends javax.swing.JFrame implements ActionListener, Me
         JTable table = (JTable) e.getSource();
         int row = table.rowAtPoint(e.getPoint());
         int modelRow = gameTable.convertRowIndexToModel(row);
-        Game game = gameModel.getGame(modelRow);
+        WingGame game = gameModel.getGame(modelRow);
         
         System.out.println("mouse pressed :" + row + " game:" + game.toString() + ":" + modelRow);
 

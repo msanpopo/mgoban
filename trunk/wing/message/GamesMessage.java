@@ -21,7 +21,7 @@ package wing.message;
 import java.util.Collection;
 import java.util.TreeSet;
 
-import wing.Game;
+import wing.WingGame;
 import wing.Block;
 
 /*
@@ -42,30 +42,30 @@ import wing.Block;
  */
 
 public class GamesMessage extends Message {
-    private TreeSet<Game> gameSet;
+    private TreeSet<WingGame> gameSet;
     
     public GamesMessage(Block block){
         super(block);
         
         boolean firstline = true;
         
-        gameSet = new TreeSet<Game>();
+        gameSet = new TreeSet<WingGame>();
         
         for (String s : block.getMessageCollection()){
             if(firstline){
                 firstline = false;
                 continue;
             }
-            Game game = new Game(s);
+            WingGame game = new WingGame(s);
             if(game.isInitialized()){
-                gameSet.add(new Game(s));
+                gameSet.add(new WingGame(s));
             }else{
                 System.err.println("err:GameMessage: game is not initialized:" + game.toString());
             }
         }
     }
 
-    public Collection<Game> getGameCollection(){
+    public Collection<WingGame> getGameCollection(){
         return gameSet;
     }
     
@@ -73,7 +73,7 @@ public class GamesMessage extends Message {
         return gameSet.size();
     }
     
-    public Game first(){
+    public WingGame first(){
         return gameSet.first();
     }
 }

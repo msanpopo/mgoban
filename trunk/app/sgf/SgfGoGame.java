@@ -29,7 +29,6 @@ import go.controller.MarkController;
 import go.controller.ScoringController;
 import go.controller.SetupController;
 import gtp.GtpEngine;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class SgfGoGame extends GoGame{
@@ -57,8 +56,8 @@ public class SgfGoGame extends GoGame{
     private MarkController markController;
     private SetupController setupController;
     
-    public SgfGoGame(JFrame owner){
-        super(owner);
+    public SgfGoGame(){
+        super();
         
         gameController = new GameController();
         scoringController = new ScoringController();

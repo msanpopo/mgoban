@@ -25,9 +25,7 @@ import java.util.regex.Pattern;
 /**
  * NNGS 系サーバーがあつかう「対局」。
  * <pre>
- * サーバーからの文字列から作られ、文字列を展開しいた結果を保持するデータの入れ物。
- * 
- * games コマンドで帰ってくる各行が「対局」。
+ * games コマンドでかえってくる各行が「対局」。
  * 
  * games コマンドで帰ってくる文字列の例。
  * [##]  white name [ rk ]      black name [ rk ] (Move size H Komi BY FR) (###)
@@ -35,7 +33,7 @@ import java.util.regex.Pattern;
  * [ 4]        no02 [10k*] vs.     abc2002 [10k*] (159   19  0  2.5 10  I) (  0)
  * </pre>
  */
-public class Game implements Comparable<Game> {
+public class WingGame implements Comparable<WingGame> {
 
     private static final Pattern p0 = Pattern.compile("\\[\\s*(\\d+)\\]\\s*(.*) \\[\\s*([^\\s]+)\\s*\\] vs\\.\\s*(.*) \\[\\s*([^\\s]+)\\s*\\] \\((.*)\\) \\(\\s*(.*)\\)");
     private static final Pattern p1 = Pattern.compile("\\s*(\\d+)\\s*(\\d+)\\s*(\\d+)\\s*([-.0-9]*)\\s*(\\d+)\\s*(.*)");
@@ -61,7 +59,7 @@ public class Game implements Comparable<Game> {
      * @param s サーバーからの対局をあらわす文字列。 
      * <pre>例："[ 2]         tki [ 6k*] vs.    tnjsara2 [ 6k*] ( 78   19  0  0.5  5  I) (  0)"</pre>
      */
-    public Game(String s) {
+    public WingGame(String s) {
         initialized = false;
 
         origStr = s;
@@ -173,7 +171,7 @@ public class Game implements Comparable<Game> {
         return origStr;
     }
 
-    public int compareTo(Game g) {
+    public int compareTo(WingGame g) {
         if (white.compareTo(g.white) == 0) {
             if (white.getName().equals(g.white.getName()) && black.getName().equals(g.black.getName())) {
                 return 0;

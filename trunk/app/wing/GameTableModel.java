@@ -21,7 +21,7 @@ package app.wing;
 import java.util.Collection;
 import javax.swing.table.AbstractTableModel;
 
-import wing.Game;
+import wing.WingGame;
 import wing.User;
 
 @SuppressWarnings("serial")
@@ -34,24 +34,24 @@ public class GameTableModel extends AbstractTableModel{
     private static final String[] header = {NO, WHITE, BLACK, GAME_STATE};
     private static final int[] columnWidth = {30, 120, 120, 290};
     
-    private Game[] gameArray;
+    private WingGame[] gameArray;
     
     public GameTableModel(){
-        gameArray = new Game[0];
+        gameArray = new WingGame[0];
     }
     
     public void clear(){
-        gameArray = new Game[0];
+        gameArray = new WingGame[0];
         
         fireTableDataChanged();
     }
     
-    public void setGame(Collection<Game> gameSet){
+    public void setGame(Collection<WingGame> gameSet){
         int size = gameSet.size();
         
-        gameArray = new Game[size];
+        gameArray = new WingGame[size];
         int i = 0;
-        for(Game g : gameSet){
+        for(WingGame g : gameSet){
             gameArray[size - 1 - i] = g;     // gameSet は、ランクの弱い順になっているので入れ替える
             i += 1;
         }
@@ -59,7 +59,7 @@ public class GameTableModel extends AbstractTableModel{
         fireTableDataChanged();
     }
     
-    public Game getGame(int index){
+    public WingGame getGame(int index){
         return gameArray[index];
     }
 
@@ -91,7 +91,7 @@ public class GameTableModel extends AbstractTableModel{
             case 2:
                 return User.class;
             case 3:
-                return Game.class;
+                return WingGame.class;
             default:
                 return Object.class;
         }
@@ -99,7 +99,7 @@ public class GameTableModel extends AbstractTableModel{
     
     public Object getValueAt(int row, int column) {
         // System.out.println("row:" + row + " ar.lenght:" + gameArray.length);
-        Game game = gameArray[row];
+        WingGame game = gameArray[row];
         Object o;
         
         switch(column){

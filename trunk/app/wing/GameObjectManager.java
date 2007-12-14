@@ -20,7 +20,7 @@ package app.wing;
 
 import app.*;
 import java.util.ArrayList;
-import wing.Game;
+import wing.WingGame;
 
 import wing.MessageReceiver;
 import wing.message.Message;
@@ -54,7 +54,7 @@ public class GameObjectManager implements MessageReceiver{
         }
     }
     
-    public void createNewGameObject(Game game){
+    public void createNewGameObject(WingGame game){
         String myName = netGo.getServer().getLoginName();
         if(hasGameObject(game.getGameNo()) == false){
             System.out.println("GameObjectManager.createNewGameObject:" + game);
