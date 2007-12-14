@@ -33,7 +33,7 @@ import sgf.GameTree;
 import sgf.GoNode;
 import sgf.property.GameInfoProperty;
 import sgf.property.SetupProperty;
-import wing.Game;
+import wing.WingGame;
 
 import wing.MessageReceiver;
 import wing.WingMove;
@@ -58,7 +58,7 @@ public class GameObject implements  InputListener, ComponentListener, MessageRec
     
     private NetGo netGo;
     
-    private Game game;
+    private WingGame game;
     private int gameNo;
     private String blackName;
     private String whiteName;
@@ -70,7 +70,7 @@ public class GameObject implements  InputListener, ComponentListener, MessageRec
     private int type;
     
     private NetGoGame goGame;
-    private WingGoWindow gw;
+    private WingGoWindow goWindow;
     
     private NetPlayer blackPlayer, whitePlayer;
     
@@ -89,9 +89,7 @@ public class GameObject implements  InputListener, ComponentListener, MessageRec
         this.whiteName = wName;
         
         this.gameObjectManager = gom;
-        
         this.myName = myName;
-        
         this.initialized = false;
         
         netGo.getServer().addReceiver(this);
@@ -99,7 +97,7 @@ public class GameObject implements  InputListener, ComponentListener, MessageRec
     }
     
     // 対局を「開く」した時
-    public GameObject(NetGo netGo, Game game, GameObjectManager gom, String myName){
+    public GameObject(NetGo netGo, WingGame game, GameObjectManager gom, String myName){
         this.netGo = netGo;
         this.netGo.getWindow().addComponentListener(this);
         
@@ -109,9 +107,7 @@ public class GameObject implements  InputListener, ComponentListener, MessageRec
         this.whiteName = game.getWhiteName();
         
         this.gameObjectManager = gom;
-        
         this.myName = myName;
-        
         this.initialized = false;
         
         netGo.getServer().addReceiver(this);
@@ -119,41 +115,40 @@ public class GameObject implements  InputListener, ComponentListener, MessageRec
         setGame(game);
     }
     
-    private void setGame(Game game){
+    private void setGame(WingGame game){
         this.game = game;
         this.initialized = true;
         
         int boardSize = game.getBoardSize();
-        int handicap = game.getHandicap();
         double komi = game.getKomi();
         int byoYomiSec = game.getByoYomiTime();
         
         goGame = new NetGoGame(netGo.getWindow(), 0.0, byoYomiSec * 60, 25, 0.0);
         
-        gw = new WingGoWindow(goGame);
-        gw.addComponentListener(this);
-        gw.setInputListener(this);
+        goWindow = new WingGoWindow(goGame);
+        goWindow.addComponentListener(this);
+        goWindow.setInputListener(this);
         
         System.out.println("GameObject:myName:" + myName);
         
         type = TYPE_OBSERVE;
         if(myName.equals(blackName)){
             type = TYPE_GAME;
-            blackPlayer = new WingHumanPlayer(GoColor.BLACK, this, goGame.getBoard(), gw);
+            blackPlayer = new WingHumanPlayer(GoColor.BLACK, this, goGame.getBoard(), goWindow);
         }else{
-            blackPlayer = new WingServerPlayer(GoColor.BLACK, gw);
+            blackPlayer = new WingServerPlayer(GoColor.BLACK, goWindow);
         }
         if(myName.equals(whiteName)){
             type = TYPE_GAME;
-            whitePlayer = new WingHumanPlayer(GoColor.WHITE, this, goGame.getBoard(), gw);
+            whitePlayer = new WingHumanPlayer(GoColor.WHITE, this, goGame.getBoard(), goWindow);
         }else{
-            whitePlayer = new WingServerPlayer(GoColor.WHITE, gw);
+            whitePlayer = new WingServerPlayer(GoColor.WHITE, goWindow);
         }
         
         if(type == TYPE_OBSERVE){
-            gw.setInputList(netGo.getKibitzInputList());
+            goWindow.setInputList(netGo.getKibitzInputList());
         }else{
-            gw.setInputList(netGo.getSayInputList());
+            goWindow.setInputList(netGo.getSayInputList());
         }
         
         lastMoveNo = -1;
@@ -176,9 +171,9 @@ public class GameObject implements  InputListener, ComponentListener, MessageRec
         tree.setNewTree(root);
         
         goGame.setPlayer(blackPlayer, whitePlayer);
-        goGame.setWindow(gw);
-        goGame.setOperationPanel(gw);
-        goGame.addGoGameListener(gw);
+        goGame.setWindow(goWindow);
+        goGame.setOperationPanel(goWindow);
+        goGame.addGoGameListener(goWindow);
         goGame.connectObject();
         goGame.start();
         
@@ -223,11 +218,12 @@ public class GameObject implements  InputListener, ComponentListener, MessageRec
                 GamesMessage m = (GamesMessage)wm;
                 
                 if(m.size() == 1){
-                    Game g = m.first();
+                    WingGame g = m.first();
                     
                     System.out.println("GameObject:games received:" + g.toString());
                     
-                    if(g.getGameNo() == gameNo && g.getBlackName().equals(blackName) && g.getWhiteName().equals(whiteName)){
+                    if(g.getGameNo() == gameNo 
+                            && g.getBlackName().equals(blackName) && g.getWhiteName().equals(whiteName)){
                         setGame(g);
                     }
                 }
@@ -309,12 +305,12 @@ public class GameObject implements  InputListener, ComponentListener, MessageRec
             }else if(wm instanceof KibitzMessage){
                 KibitzMessage m = (KibitzMessage)wm;
                 if(m.getGameNo() == game.getGameNo()){
-                    gw.addText(m.getText());
+                    goWindow.addText(m.getText());
                 }
                 
             }else if(wm instanceof SayMessage){
                 SayMessage m = (SayMessage)wm;
-                gw.addText(m.getText());
+                goWindow.addText(m.getText());
                 
             }else if(wm instanceof StatusMessage){
                 StatusMessage m = (StatusMessage)wm;
@@ -355,7 +351,7 @@ public class GameObject implements  InputListener, ComponentListener, MessageRec
                 AdjournRequestMessage m = (AdjournRequestMessage)wm;
                 System.out.println("GameObject: adjourn request:");
                 
-                int retval = JOptionPane.showConfirmDialog(gw, ADJOURN_REQUEST, "", JOptionPane.YES_NO_OPTION);
+                int retval = JOptionPane.showConfirmDialog(null, ADJOURN_REQUEST, "", JOptionPane.YES_NO_OPTION);
                 if(retval == JOptionPane.YES_OPTION){
                     sendCommand("adjourn");
                 }else{
@@ -475,7 +471,7 @@ public class GameObject implements  InputListener, ComponentListener, MessageRec
     public void textInputed(Object source, String text) {
         System.out.println("textInputed : " + text);
         if(type == TYPE_GAME){
-            gw.addText(myName + " : " + text);
+            goWindow.addText(myName + " : " + text);
             netGo.sendCommand("say " + text);
         }else if(type == TYPE_OBSERVE){
             netGo.sendCommand("kibitz " + gameNo + " " + text);
@@ -504,7 +500,7 @@ public class GameObject implements  InputListener, ComponentListener, MessageRec
     
     // ComponentListener
     public void componentHidden(ComponentEvent e) {
-        if (e.getSource() == gw) {
+        if (e.getSource() == goWindow) {
             System.out.println("GameObject.componentHidden:WingGoWindow");
             if (type == TYPE_GAME) {
             // 何もしない
@@ -514,7 +510,8 @@ public class GameObject implements  InputListener, ComponentListener, MessageRec
 
             gameObjectManager.removeGameObject(this);
             netGo.getServer().removeReceiver(this);
-            gw = null;
+            netGo.getWindow().removeComponentListener(this);
+            goWindow = null;
         }else if(e.getSource() == netGo.getWindow()){
             System.out.println("GameObject.componentHidden:WingWindow");
             // gw を閉じるのは GoGame が担当する（わかりにくすぎる） TODO

@@ -46,14 +46,6 @@ public class MainWindow extends JFrame {
 
         setTitle("mGo");
         setLocationByPlatform(true);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
-            }
-        });
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentHidden(java.awt.event.ComponentEvent evt) {
                 formComponentHidden(evt);
@@ -118,27 +110,16 @@ public class MainWindow extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void localGoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_localGoButtonActionPerformed
-        App.getInstance().startEditor(this);
+        App.getInstance().startEditor();
     }//GEN-LAST:event_localGoButtonActionPerformed
         
     private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
         System.out.println("MainWindow Hidden");
-
         dispose();
     }//GEN-LAST:event_formComponentHidden
-    
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        System.out.println("MainWindow Closed");
-        System.exit(0);
-    }//GEN-LAST:event_formWindowClosed
-    
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        // ウィンドウマネージャーの閉じるボタンが押された
-        System.out.println("MainWindow Closeing()");
-    }//GEN-LAST:event_formWindowClosing
-    
+            
     private void netGoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_netGoButtonActionPerformed
-        App.getInstance().startNetGo(this);
+        App.getInstance().startNetGo();
     }//GEN-LAST:event_netGoButtonActionPerformed
         
     private void quitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitButtonActionPerformed

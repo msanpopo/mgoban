@@ -55,24 +55,26 @@ public class GoGame implements GameTreeListener, ComponentListener, GoClockListe
     
     protected GoState state;
     
-    public GoGame(JFrame owner){
-        init(owner);
+    public GoGame(){
+        this.owner = null;
+        
+        init();
         
         clock = new GoClock();
         clock.setListener(this);
     }
     
     public GoGame(JFrame owner, double mainSec, double byoYomiSec, int byoYomiStones, double kouryoSec){
-        init(owner);
+        this.owner = owner;
+        this.owner.addComponentListener(this);
+        
+        init();
         
         clock = new GoClock(mainSec, byoYomiSec, byoYomiStones, kouryoSec);
         clock.setListener(this);
     }
     
-    private void init(JFrame owner){
-        this.owner = owner;
-        this.owner.addComponentListener(this);
-        
+    private void init(){
         this.board = new GoBoard(19);
         this.tree = new GameTree();
         
@@ -252,7 +254,9 @@ public class GoGame implements GameTreeListener, ComponentListener, GoClockListe
     public void componentHidden(ComponentEvent e) {
         if(e.getSource() == window){
             System.out.println("GoGame.componentHidden: go window");
-            owner.removeComponentListener(this);
+            if(owner != null){
+                owner.removeComponentListener(this);
+            }
         }else if(e.getSource() == owner){
             // 親が閉じられた
             System.out.println("GoGame.componentHidden: main window");

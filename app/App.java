@@ -22,8 +22,10 @@ import app.sgf.SgfGoGame;
 import app.sgf.SgfGoWindow;
 import app.wing.NetGo;
 import go.GoColor;
-import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.File;
 import java.io.InputStream;
 import javax.swing.JFrame;
@@ -32,7 +34,8 @@ import sgf.GoNode;
 import sgf.property.GameInfoProperty;
 import sound.SoundPlayer;
 
-public class App {
+public class App implements ComponentListener, WindowListener {
+
     private static App appData;
     private static final String APP_DIR_LINUX = ".mgoban";
     private static final String APP_DIR_WINDOWS = "mgoban";
@@ -42,7 +45,7 @@ public class App {
     private File appDir;
     private File cfgFile;
     private Config config;
-    private MainWindow mainWindow;
+    private JFrame mainWindow;
 
     public static App getInstance() {
         if (appData == null) {
@@ -117,28 +120,21 @@ public class App {
 
         config = new Config(cfgFile);
 
-        mainWindow = new MainWindow();
-        mainWindow.addComponentListener(new ComponentAdapter() {
-
-            @Override
-            public void componentHidden(ComponentEvent e) {
-                System.out.println("componentHidden: app");
-                config.write();
-            }
-        });
         /*
         String lookAndFeelClassName = config.getProperty("lookAndFeel", "javax.swing.plaf.metal.MetalLookAndFeel");
         try {
-            UIManager.setLookAndFeel(lookAndFeelClassName);
-            SwingUtilities.updateComponentTreeUI(ui);
+        UIManager.setLookAndFeel(lookAndFeelClassName);
+        SwingUtilities.updateComponentTreeUI(ui);
         } catch (Exception ex) {
-            System.err.println("Ui UIManager.setLookAndFeel:" + lookAndFeelClassName);
-            ex.printStackTrace();
+        System.err.println("Ui UIManager.setLookAndFeel:" + lookAndFeelClassName);
+        ex.printStackTrace();
         }
-        */
-        mainWindow.setVisible(true);
+         */
         if (sgfFile != null) {
-            startEditor(mainWindow, sgfFile);
+            startEditor(sgfFile);
+        }else{
+            setWindow(new MainWindow());
+            mainWindow.setVisible(true);
         }
     }
 
@@ -146,22 +142,21 @@ public class App {
         SoundPlayer.play(type);
     }
 
-    public void startEditor(JFrame owner, File sgfFile) {
+    public void startEditor(File sgfFile) {
         int boardSize = 19;
         double komi = 6.5;
 
         GoNode root = GoNode.createRootNode(boardSize);
-        
+
         GameInfoProperty gip = new GameInfoProperty();
         gip.setKomi(komi);
         gip.setPlayerName(GoColor.BLACK, "Black");
         gip.setPlayerName(GoColor.WHITE, "White");
-        
+
         root.setGameInfoProperty(gip);
 
-        SgfGoGame goGame = new SgfGoGame(owner);
-        owner.addComponentListener(goGame);
-
+        SgfGoGame goGame = new SgfGoGame();
+        
         GameTree tree = goGame.getGameTree();
         tree.setNewTree(root);
 
@@ -175,22 +170,55 @@ public class App {
         goGame.addGoGameListener(actionList);
         goGame.connectObject();
         goGame.start();
+        
+        setWindow(goGame.getWindow());
 
         if (sgfFile != null) {
             actionList.openAction.doAction(sgfFile);
         }
     }
 
-    public void startEditor(JFrame owner) {
-        startEditor(owner, null);
+    public void startEditor() {
+        startEditor(null);
     }
-    
-    public void startNetGo(JFrame owner){
+
+    public void startNetGo() {
         NetGo netGo = new NetGo();
-        owner.addComponentListener(netGo);
+        setWindow(netGo.getWindow());
     }
-    
-    public Config getConfig(){
+
+    public Config getConfig() {
         return config;
     }
+
+    private void setWindow(JFrame newWindow) {
+        if (mainWindow != null) {
+            mainWindow.removeComponentListener(this);
+            mainWindow.removeWindowListener(this);
+            mainWindow.setVisible(false);
+        }
+
+        mainWindow = newWindow;
+        mainWindow.addComponentListener(this);
+        mainWindow.addWindowListener(this);
+    }
+
+    public void componentResized(ComponentEvent e) {}
+    public void componentMoved(ComponentEvent e) {}
+    public void componentShown(ComponentEvent e) {}
+    public void componentHidden(ComponentEvent e) {
+        System.out.println("App.componentHidden: config.write()");
+        config.write();
+    }
+
+    public void windowOpened(WindowEvent e) {}
+    public void windowClosing(WindowEvent e) {}
+    public void windowClosed(WindowEvent e) {
+        System.out.println("App.windowClosed: exit");
+        System.exit(0);
+    }
+    public void windowIconified(WindowEvent e) {}
+    public void windowDeiconified(WindowEvent e) {}
+    public void windowActivated(WindowEvent e) {}
+    public void windowDeactivated(WindowEvent e) {}
 }
