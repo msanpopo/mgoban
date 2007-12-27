@@ -14,10 +14,10 @@
  *
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */   
-
+ */
 package sound;
 
+import app.SoundType;
 import java.io.IOException;
 import java.io.InputStream;
 import javax.sound.sampled.AudioFormat;
@@ -25,64 +25,66 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
-import javax.sound.sampled.LineEvent;
-import javax.sound.sampled.LineListener;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
-public class Sound implements LineListener{
-    private String resource;
+public class Sound{
 
+    private SoundType type;
     private Clip clip;
     
-    public Sound(String resource){
-        this.resource = resource;
-    }
-    
-    public void play(){
-        InputStream stream = this.getClass().getClassLoader().getResourceAsStream(resource);
+    public Sound(SoundType type) {
+        this.type = type;
+        this.clip = null;
         
+        String resource = type.getResource();
+
+        InputStream stream = this.getClass().getClassLoader().getResourceAsStream(resource);
         AudioInputStream audioStream = null;
 
         try {
             audioStream = AudioSystem.getAudioInputStream(stream);
-            
+
+            AudioFormat format = audioStream.getFormat();
+            DataLine.Info info = new DataLine.Info(Clip.class, format);
+
+            clip = (Clip) AudioSystem.getLine(info);
+            clip.open(audioStream);
+
         } catch (IOException ex) {
             ex.printStackTrace();
         } catch (UnsupportedAudioFileException ex) {
             ex.printStackTrace();
-        }
-        
-        AudioFormat format = audioStream.getFormat();
-        DataLine.Info info = new DataLine.Info(Clip.class, format);
-        
-        try {
-            clip = (Clip) AudioSystem.getLine(info);
-            clip.addLineListener(this);
-            
         } catch (LineUnavailableException ex) {
             ex.printStackTrace();
+        } finally {
+            if (audioStream != null) {
+                try {
+                    audioStream.close();
+                } catch (IOException ex) {
+                    System.err.println("err:Sound: audioStream.close:" + ex);
+                }
+            }
         }
-        
-        try {
-            clip.open(audioStream);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } catch (LineUnavailableException ex) {
-            ex.printStackTrace();
-        }
-
-        // System.out.println("Sound.play:" + clip.isRunning());
-        
-        clip.setFramePosition(0);
-        clip.start();
-        
     }
-    
-    public void update(LineEvent event) {
-        //System.out.println("Sound.update:type:" +  event.getType());
-        if(event.getType() == LineEvent.Type.STOP){
-            clip.close();
+
+    public void play() {
+//        System.out.println("Sound.play:" + clip.isRunning());
+        Thread thread = new PlayThread();
+        thread.start();
+    }
+
+    class PlayThread extends Thread{
+        public PlayThread(){
+        }
+        
+        @Override
+        public void run(){
+            synchronized(clip){
+                clip.stop();
+                clip.setFramePosition(0);
+                clip.start();
+            }
         }
     }
 }

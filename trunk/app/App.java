@@ -46,6 +46,7 @@ public class App implements ComponentListener, WindowListener {
     private File cfgFile;
     private Config config;
     private JFrame mainWindow;
+    private SoundPlayer soundPlayer;
 
     public static App getInstance() {
         if (appData == null) {
@@ -80,7 +81,10 @@ public class App implements ComponentListener, WindowListener {
             appDir.mkdir();
         }
 
+        
         mainWindow = null;
+        
+        soundPlayer = new SoundPlayer();
     }
 
     public File getAppDir() {
@@ -139,7 +143,7 @@ public class App implements ComponentListener, WindowListener {
     }
 
     public void soundPlay(SoundType type) {
-        SoundPlayer.play(type);
+        soundPlayer.play(type);
     }
 
     public void startEditor(File sgfFile) {
