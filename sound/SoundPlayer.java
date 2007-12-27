@@ -19,20 +19,37 @@
 package sound;
 
 import app.SoundType;
+import java.util.EnumMap;
 
 public class SoundPlayer {
+    private EnumMap<SoundType, Sound> map;
+
+    public SoundPlayer(){
+        map = new EnumMap(SoundType.class);
+        for(SoundType type : SoundType.values()){
+            Sound sound = new Sound(type);
+            map.put(type, sound);
+        }
+    }
     
-    public static void play(SoundType type) {
-        Sound sound = new Sound(type.getResource());
+    public void play(SoundType type){
+        Sound sound = map.get(type);
         sound.play();
     }
-
+    
     public static void main(String[] args){
+        SoundPlayer player = new SoundPlayer();
         
-        for(int i = 0; i < 20; ++i){
-            play(SoundType.MESSAGE);
+        player.play(SoundType.MESSAGE);
+
+//        player.play(SoundType.CLICK);
+//        player.play(SoundType.TIME);
+        
+        for(int i = 0; i < 10; ++i){
+            System.out.println("play:" + i);
+            player.play(SoundType.CLICK);
             try {
-                Thread.sleep(150);
+                Thread.sleep(100);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
