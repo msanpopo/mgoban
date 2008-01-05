@@ -167,6 +167,8 @@ public class App implements ComponentListener, WindowListener {
         SgfActionList actionList = new SgfActionList(goGame);
 
         SgfGoWindow sgfGoWindow = new SgfGoWindow(goGame, actionList);
+        
+        setWindow(sgfGoWindow);
 
         goGame.setWindow(sgfGoWindow);
         goGame.setOperationPanel(sgfGoWindow);
@@ -174,8 +176,6 @@ public class App implements ComponentListener, WindowListener {
         goGame.addGoGameListener(actionList);
         goGame.connectObject();
         goGame.start();
-        
-        setWindow(goGame.getWindow());
 
         if (sgfFile != null) {
             actionList.openAction.doAction(sgfFile);
