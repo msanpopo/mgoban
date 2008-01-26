@@ -32,10 +32,14 @@ public class ScoringController{
     private GoResult resultBlack;   // 黒が報告した結果
     private GoResult resultWhite;   // 白が報告した結果
     
+    private boolean dialogShown;
+    
     public ScoringController() {
         this.goGame = null;
         this.scorer0 = null;
         this.scorer1 = null;
+        
+        this.dialogShown = false;
         
         init();
     }
@@ -99,12 +103,9 @@ public class ScoringController{
     public void setResult(Scorer scorer, GoResult result){
         setResultLocal(scorer, result);
         
-        if(resultBlack != null && resultWhite != null){
+        if(resultBlack != null && resultWhite != null && dialogShown == false){
             if(resultBlack.equals(resultWhite)){
-                double komi = getKomi();
-
-                String resultString = goGame.getBoard().getResultString(komi);
-                goGame.showResultDialog(resultString);
+                showResultDialog();
             }else{
                 System.err.println("ScoringController: score mismatch:"
                         + resultBlack.toString() + ":" + resultWhite.toString());
@@ -125,9 +126,7 @@ public class ScoringController{
                     + resultBlack.toString() + ":" + resultWhite.toString());
         }
         */
-        double komi = getKomi();
-        String resultString = goGame.getBoard().getResultString(komi);
-        goGame.showResultDialog(resultString);
+        showResultDialog();
 
         stop();
         
@@ -136,6 +135,14 @@ public class ScoringController{
     
     public void undo(int n){
         // TODO 
+    }
+    
+    private void showResultDialog(){
+        dialogShown = true;
+        
+        double komi = getKomi();
+        String resultString = goGame.getBoard().getResultString(komi);
+        goGame.showResultDialog(resultString);
     }
     
     private double getKomi(){
