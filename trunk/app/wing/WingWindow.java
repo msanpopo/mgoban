@@ -80,7 +80,7 @@ public class WingWindow extends javax.swing.JFrame implements ActionListener, Me
     public WingWindow(NetGo netGo) {
         this.netGo = netGo;
 
-        this.terminalPanel = new TerminalPanel();
+        this.terminalPanel = new TerminalPanel(netGo);
         this.lookingOpenPanel = new LookingOpenPanel(netGo);
         this.gameModel = new GameTableModel();
         this.tabPanel = new TabPanel();

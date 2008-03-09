@@ -27,24 +27,19 @@ import javax.swing.JPanel;
 import wing.MessageReceiver;
 import wing.message.Message;
 
-@SuppressWarnings("serial")
 public class TerminalPanel extends JPanel implements InputListener, MessageReceiver{
     private NetGo netGo;
     
     private InOutPanel inOutPanel;
     
-    public TerminalPanel(){
-        this.netGo = null;
+    public TerminalPanel(NetGo netGo){
+        this.netGo = netGo;
         
         inOutPanel = new InOutPanel();
         inOutPanel.setInputListener(this);
         
         setLayout(new BorderLayout());
         add(inOutPanel, BorderLayout.CENTER);
-    }
-    
-    public void setNetGo(NetGo netGo){
-        this.netGo = netGo;
     }
     
     public void textInputed(Object source, String text) {
