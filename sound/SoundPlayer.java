@@ -25,7 +25,7 @@ public class SoundPlayer {
     private EnumMap<SoundType, Sound> map;
 
     public SoundPlayer(){
-        map = new EnumMap(SoundType.class);
+        map = new EnumMap<SoundType, Sound>(SoundType.class);
         for(SoundType type : SoundType.values()){
             Sound sound = new Sound(type);
             map.put(type, sound);
