@@ -134,7 +134,13 @@ public class GoBoardState {
             }else{
                 move(newMove);
             }
-        }else if(node.hasSetupProperty()){
+        }/*else*/
+        if(node.hasSetupProperty()){
+            /*
+             * SGFの仕様では move と setup のプロパティーを同じノードに置いてはいけない
+             * ことになっているが、Kogoの定石辞典が同じノードにおいている。
+             * しかたがないので、したがう。
+             */
             //System.out.println("BoardState.addStone:setup prop");
             SetupProperty sp = node.getSetupProperty();
             
