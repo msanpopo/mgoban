@@ -47,6 +47,7 @@
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
     <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
@@ -74,7 +75,6 @@
           <Border info="null"/>
         </Property>
         <Property name="dividerLocation" type="int" value="600"/>
-        <Property name="dividerSize" type="int" value="6"/>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[900, 600]"/>
         </Property>
@@ -119,7 +119,6 @@
               <Border info="null"/>
             </Property>
             <Property name="dividerLocation" type="int" value="420"/>
-            <Property name="dividerSize" type="int" value="6"/>
             <Property name="orientation" type="int" value="0"/>
           </Properties>
           <Constraints>
@@ -164,7 +163,7 @@
                           <Component id="jToolBar2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="lookingOpenPanelBase" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="148" max="32767" attributes="0"/>
+                          <EmptySpace pref="152" max="32767" attributes="0"/>
                           <Component id="jToolBar1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane1" alignment="1" pref="600" max="32767" attributes="0"/>
@@ -199,7 +198,6 @@
                         </Property>
                         <Property name="borderPainted" type="boolean" value="false"/>
                         <Property name="focusPainted" type="boolean" value="false"/>
-                        <Property name="opaque" type="boolean" value="false"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="gameRefreshButtonActionPerformed"/>
@@ -273,7 +271,6 @@
                         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[28, 28]"/>
                         </Property>
-                        <Property name="opaque" type="boolean" value="false"/>
                         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                           <Dimension value="[50, 28]"/>
                         </Property>

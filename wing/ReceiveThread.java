@@ -1,6 +1,6 @@
 /*
  *  mGoban - GUI for Go
- *  Copyright (C) 2007  sanpo
+ *  Copyright (C) 2007, 2009  sanpo
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -72,6 +72,7 @@ public class ReceiveThread extends Thread {
     private static final int AFTER_LOGIN = 1;
     private static final int AFTER_PASSWORD = 2;
     
+    @Override
     public void run(){
         int state = BEFORE_LOGIN;
         try {
@@ -205,6 +206,7 @@ public class ReceiveThread extends Thread {
             this.msg = msg;
         }
         
+        @Override
         public void run(){
             rList.receive(msg);
         }

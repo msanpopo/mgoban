@@ -1,6 +1,6 @@
 /*
  *  mGoban - GUI for Go
- *  Copyright (C) 2007  sanpo
+ *  Copyright (C) 2007, 2009  sanpo
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -32,6 +32,7 @@ public class PlusImage extends GoSimpleImage{
         super(c);
     }
     
+    @Override
     public void draw(Graphics2D g, int col, int row, Color color){
         int x = col * size;
         int y = row * size;

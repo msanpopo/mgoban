@@ -1,6 +1,6 @@
 /*
  *  mGoban - GUI for Go
- *  Copyright (C) 2007  sanpo
+ *  Copyright (C) 2007, 2009  sanpo
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -114,6 +114,7 @@ public class GtpMessage {
         return success;
     }
 
+    @Override
     public String toString(){
         StringBuilder str = new StringBuilder();
         

@@ -1,6 +1,6 @@
 /*
  *  mGoban - GUI for Go
- *  Copyright (C) 2007  sanpo
+ *  Copyright (C) 2007, 2009  sanpo
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,16 +18,9 @@
 package app.wing;
 
 import app.App;
-import app.wing.GameObjectManager;
-import app.wing.NetGo;
 import app.SoundType;
 import go.gui.EditInputListPanel;
-import app.wing.GameTableModel;
-import app.wing.TellPanel;
-import app.wing.TerminalPanel;
-import app.wing.LookingOpenPanel;
 import go.gui.TabPanel;
-import app.wing.UserPanel;
 import app.wing.action.ConnectAction;
 import java.awt.BorderLayout;
 import java.awt.Component;
