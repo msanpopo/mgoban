@@ -1,6 +1,6 @@
 /*
  *  mGoban - GUI for Go
- *  Copyright (C) 2007  sanpo
+ *  Copyright (C) 2007, 2009  sanpo
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -61,6 +61,7 @@ public class GtpInputThread extends Thread {
         }
     }
     
+    @Override
     public void run() {
         while (true) {
             StringBuilder str = new StringBuilder();
@@ -146,6 +147,7 @@ public class GtpInputThread extends Thread {
             this.response = response;
         }
         
+        @Override
         public void run(){
             if(engine != null){
                 engine.receiveInput(response);

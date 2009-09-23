@@ -1,6 +1,6 @@
 /*
  *  mGoban - GUI for Go
- *  Copyright (C) 2007  sanpo
+ *  Copyright (C) 2007, 2009  sanpo
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -14,8 +14,7 @@
  *
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */   
-
+ */
 package wing;
 
 import java.io.DataOutputStream;
@@ -29,80 +28,82 @@ import java.io.InputStream;
  * ほぼ jago からもらってきたまま。
  */
 public class TelnetStream extends FilterInputStream {
-	private InputStream in;
 
-	private DataOutputStream out;
+    private InputStream input;
+    private DataOutputStream out;
 
-	public TelnetStream(InputStream in, DataOutputStream out) {
-		super(in);
-		this.in = in;
-		this.out = out;
-	}
+    public TelnetStream(InputStream i, DataOutputStream o) {
+        super(i);
+        input = i;
+        out = o;
+    }
 
-	public int read() throws IOException {
-		while (true) {
-			int c = in.read();
-			
-			if (c == -1) { // ストリームの終わり
-				// System.out.println("############## TelnetStream : c:" + c);
-				return c;
-			} else if (c >= 0 && c <= 255) { // telnet で扱う文字範囲
-				if (c == 255) { // telnet コマンドのはじまり
-					int command = in.read();
+    @Override
+    public int read() throws IOException {
+        while (true) {
+            int c = input.read();
 
-					System.out.println("############## TelnetStream : command received:" + command);
+            if (c == -1) { // ストリームの終わり
+                // System.out.println("############## TelnetStream : c:" + c);
+                return c;
+            } else if (c >= 0 && c <= 255) { // telnet で扱う文字範囲
+                if (c == 255) { // telnet コマンドのはじまり
+                    int command = input.read();
 
-					if (command == 253) { // do の要求に wont をかえす
-						c = in.read(); // 要求の内容
-						out.write(255);
-						out.write(252);
-						out.write(c);
-						System.out.println("############## TelnetStream : command received:do:" + c);
-					} else if (command == 246) { // ayt の要求に nop をかえす
-						out.write(255);
-						out.write(241);
-					}
+                    System.out.println("############## TelnetStream : command received:" + command);
 
-					if (c == -1) {
-						System.out.println("############## TelnetStream : c == -1:");
-						return c;
-					}
-					continue;
-				} else if (c >= 0 && c <= 9) {
-					System.out.println("TelnetStream : drop ##:" + c);
-					continue;
-				} else if (c == 11 || c == 12) {
-					System.out.println("TelnetStream : drop ##:" + c);
-					continue;
-				}
-				// System.out.println("############## TelnetStream : c:" + c);
-				return c;
-			} else { // telnet で扱う文字範囲外
-				System.out.println("TelnetStream c < 0 or c > 255 :c:" + c);
-			}
-		}
-	}
+                    if (command == 253) { // do の要求に wont をかえす
+                        c = input.read(); // 要求の内容
+                        out.write(255);
+                        out.write(252);
+                        out.write(c);
+                        System.out.println("############## TelnetStream : command received:do:" + c);
+                    } else if (command == 246) { // ayt の要求に nop をかえす
+                        out.write(255);
+                        out.write(241);
+                    }
 
-	// InputStreamReader からは read() でなくこちらが呼ばれる。
-	public int read(byte b[], int off, int len) throws IOException {
-		int i = 0;
-		int c;
-		
-		c = read();
-		if(c == -1){
-			return -1;
-		}else{
-			b[off + i] = (byte)c;
-			++i;
-		}
-		
-		while(in.available() > 0 && i < len && c != -1){
-			c = read();
-			// System.out.print(" " + (int)c);
-			b[off + i] = (byte)c;
-			++i;
-		}
+                    if (c == -1) {
+                        System.out.println("############## TelnetStream : c == -1:");
+                        return c;
+                    }
+                    continue;
+                } else if (c >= 0 && c <= 9) {
+                    System.out.println("TelnetStream : drop ##:" + c);
+                    continue;
+                } else if (c == 11 || c == 12) {
+                    System.out.println("TelnetStream : drop ##:" + c);
+                    continue;
+                }
+                // System.out.println("############## TelnetStream : c:" + c);
+                return c;
+            } else { // telnet で扱う文字範囲外
+                System.out.println("TelnetStream c < 0 or c > 255 :c:" + c);
+            }
+        }
+    }
 
-		return i;
-	}
+    // InputStreamReader からは read() でなくこちらが呼ばれる。
+    @Override
+    public int read(byte b[], int off, int len) throws IOException {
+        int i = 0;
+        int c;
+
+        c = read();
+        if (c == -1) {
+            return -1;
+        } else {
+            b[off + i] = (byte) c;
+            ++i;
+        }
+
+        while (input.available() > 0 && i < len && c != -1) {
+            c = read();
+            // System.out.print(" " + (int)c);
+            b[off + i] = (byte) c;
+            ++i;
+        }
+
+        return i;
+    }
 }

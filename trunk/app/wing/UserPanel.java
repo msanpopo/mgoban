@@ -1,6 +1,6 @@
 /*
  *  mGoban - GUI for Go
- *  Copyright (C) 2007  sanpo
+ *  Copyright (C) 2007, 2009  sanpo
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,10 +18,7 @@
 
 package app.wing;
 
-import app.wing.MatchReceiver;
-import app.wing.NetGo;
 import wing.WingUser;
-import app.wing.UserInfoWindow;
 import go.GoRank;
 import java.awt.Component;
 import java.awt.Font;
