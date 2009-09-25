@@ -27,7 +27,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 public class StopGameAction extends AbstractAction{
-    private static final String STOP_GAME = "終了";
+    private static final String STOP_GAME = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Stop");
     
     private static final String ICON = "image/media-playback-stop.png";
     

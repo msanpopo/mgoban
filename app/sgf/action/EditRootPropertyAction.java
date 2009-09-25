@@ -18,7 +18,6 @@
 
 package app.sgf.action;
 
-import app.sgf.*;
 import go.gui.RootPropertyPanel;
 import go.GoGame;
 import java.awt.event.ActionEvent;
@@ -30,8 +29,8 @@ import sgf.GoNode;
 import sgf.property.RootProperty;
 
 public class EditRootPropertyAction extends AbstractAction {
-    private static final String OK = "OK";
-    private static final String EDIT_ROOT = "編集";
+    private static final String OK = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("OK");
+    private static final String EDIT_ROOT = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Edit");
     private GoGame goGame;
 
     public EditRootPropertyAction(GoGame goGame) {
@@ -48,7 +47,7 @@ public class EditRootPropertyAction extends AbstractAction {
             RootPropertyPanel panel = new RootPropertyPanel(rp);
 
             String[] options = {OK};
-            int retval = JOptionPane.showOptionDialog(goGame.getWindow(), panel, "Edit root property",
+            int retval = JOptionPane.showOptionDialog(goGame.getWindow(), panel, java.util.ResourceBundle.getBundle("app/resource/Resource").getString("RootProperty"),
                     JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                     null, options, options[0]);
 

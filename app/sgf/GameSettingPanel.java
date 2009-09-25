@@ -19,7 +19,6 @@
 package app.sgf;
 
 import app.App;
-import app.sgf.GtpEngineSettingPanel;
 import go.GoGame;
 import go.gui.GtpTimeSettingPanel;
 import gtp.GtpEngine;
@@ -32,18 +31,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import javax.swing.border.TitledBorder;
 
 public class GameSettingPanel extends javax.swing.JPanel {
-    private static final String CLOSE = "閉じる";
-    
-    private static final String BLACK = "黒";
-    private static final String WHITE = "白";
-    
-    private static final String HUMAN = "人間";
-    private static final String COMPUTER = "コンピュータ";
-    
-    private static final String ENGINE_SETTING = "エンジンの設定";
+    private static final String CLOSE = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("CLOSE");
     
     private GoGame goGame;
     
@@ -57,17 +47,6 @@ public class GameSettingPanel extends javax.swing.JPanel {
         timeSettingPanel = new GtpTimeSettingPanel();
         
         initComponents();
-        
-        TitledBorder blackBorder = (TitledBorder) blackPanel.getBorder();
-        TitledBorder whiteBorder = (TitledBorder) whitePanel.getBorder();
-        blackBorder.setTitle(BLACK);
-        whiteBorder.setTitle(WHITE);
-        radioBlackHuman.setText(HUMAN);
-        radioBlackCom.setText(COMPUTER);
-        radioWhiteHuman.setText(HUMAN);
-        radioWhiteCom.setText(COMPUTER);
-        
-        engineSettingButton.setText(ENGINE_SETTING);
         
         leftPanel.setLayout(new BorderLayout());
         leftPanel.add(timeSettingPanel, BorderLayout.CENTER);
@@ -178,8 +157,9 @@ public class GameSettingPanel extends javax.swing.JPanel {
         return timeSettingPanel.getByoYomiStones();
     }
     
-    // <editor-fold defaultstate="collapsed" desc=" Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         bulackButtonGroup = new javax.swing.ButtonGroup();
         whiteButtonGroup = new javax.swing.ButtonGroup();
         blackPanel = new javax.swing.JPanel();
@@ -194,16 +174,16 @@ public class GameSettingPanel extends javax.swing.JPanel {
         engineSettingButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
 
-        blackPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Black"));
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/resource/Resource"); // NOI18N
+        blackPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("Black"))); // NOI18N
+
         bulackButtonGroup.add(radioBlackHuman);
-        radioBlackHuman.setText("Human");
+        radioBlackHuman.setText(bundle.getString("Human")); // NOI18N
         radioBlackHuman.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        radioBlackHuman.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         bulackButtonGroup.add(radioBlackCom);
-        radioBlackCom.setText("Computer :");
+        radioBlackCom.setText(bundle.getString("Computer")); // NOI18N
         radioBlackCom.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        radioBlackCom.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         javax.swing.GroupLayout blackPanelLayout = new javax.swing.GroupLayout(blackPanel);
         blackPanel.setLayout(blackPanelLayout);
@@ -213,10 +193,9 @@ public class GameSettingPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(blackPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(blackPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(radioBlackCom)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(blackComboBox, 0, 270, Short.MAX_VALUE))
+                        .addComponent(blackComboBox, 0, 344, Short.MAX_VALUE))
                     .addComponent(radioBlackHuman))
                 .addContainerGap())
         );
@@ -233,6 +212,7 @@ public class GameSettingPanel extends javax.swing.JPanel {
         );
 
         leftPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+
         javax.swing.GroupLayout leftPanelLayout = new javax.swing.GroupLayout(leftPanel);
         leftPanel.setLayout(leftPanelLayout);
         leftPanelLayout.setHorizontalGroup(
@@ -244,16 +224,15 @@ public class GameSettingPanel extends javax.swing.JPanel {
             .addGap(0, 115, Short.MAX_VALUE)
         );
 
-        whitePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("White"));
+        whitePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(bundle.getString("White"))); // NOI18N
+
         whiteButtonGroup.add(radioWhiteHuman);
-        radioWhiteHuman.setText("Human");
+        radioWhiteHuman.setText(bundle.getString("Human")); // NOI18N
         radioWhiteHuman.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        radioWhiteHuman.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         whiteButtonGroup.add(radioWhiteCom);
-        radioWhiteCom.setText("Computer :");
+        radioWhiteCom.setText(bundle.getString("Computer")); // NOI18N
         radioWhiteCom.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        radioWhiteCom.setMargin(new java.awt.Insets(0, 0, 0, 0));
 
         javax.swing.GroupLayout whitePanelLayout = new javax.swing.GroupLayout(whitePanel);
         whitePanel.setLayout(whitePanelLayout);
@@ -265,7 +244,7 @@ public class GameSettingPanel extends javax.swing.JPanel {
                     .addGroup(whitePanelLayout.createSequentialGroup()
                         .addComponent(radioWhiteCom)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(whiteComboBox, 0, 270, Short.MAX_VALUE))
+                        .addComponent(whiteComboBox, 0, 344, Short.MAX_VALUE))
                     .addComponent(radioWhiteHuman))
                 .addContainerGap())
         );
@@ -281,7 +260,7 @@ public class GameSettingPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        engineSettingButton.setText("Engine Setting");
+        engineSettingButton.setText(bundle.getString("EngineSetting")); // NOI18N
         engineSettingButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 engineSettingButtonActionPerformed(evt);
@@ -294,16 +273,14 @@ public class GameSettingPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(272, 272, 272)
-                            .addComponent(engineSettingButton))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 478, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(leftPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(blackPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(whitePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(whitePanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(engineSettingButton, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -316,7 +293,7 @@ public class GameSettingPanel extends javax.swing.JPanel {
                 .addComponent(engineSettingButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(leftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -326,7 +303,7 @@ public class GameSettingPanel extends javax.swing.JPanel {
         GtpEngineSettingPanel panel = new GtpEngineSettingPanel();
         
         String[] options = {CLOSE};
-        int retval = JOptionPane.showOptionDialog(goGame.getWindow(), panel, "Engine Setting",
+        int retval = JOptionPane.showOptionDialog(goGame.getWindow(), panel, java.util.ResourceBundle.getBundle("app/resource/Resource").getString("EngineSetting"),
                                     JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                                     null, options, options[0]);
     }//GEN-LAST:event_engineSettingButtonActionPerformed

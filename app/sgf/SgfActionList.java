@@ -24,7 +24,7 @@ import app.sgf.action.AddSetupPropertyAction;
 import app.sgf.action.AddTreeAction;
 import app.sgf.action.GoParentAction;
 import app.sgf.action.GoBottomAction;
-import app.sgf.action.CloseAction;
+import app.sgf.action.QuitAction;
 import app.sgf.action.DeleteNodeAction;
 import app.sgf.action.EditMovePropertyAction;
 import app.sgf.action.EditGameInfoPropertyAction;
@@ -45,7 +45,7 @@ import app.sgf.action.StopGameAction;
 import app.sgf.action.GoTopAction;
 import app.sgf.action.InsertNodeBeforeAction;
 import app.sgf.action.PivotAction;
-import app.sgf.action.SaveImageAction;
+import app.sgf.action.ExportImageAction;
 import go.GoClock;
 import go.GoGame;
 import go.GoGameListener;
@@ -61,7 +61,7 @@ public class SgfActionList implements GoGameListener{
     public OpenAction openAction;
     public Action saveAction;
     public Action saveAsAction;
-    public SaveImageAction saveImageAction;
+    public ExportImageAction exportImageAction;
     public Action addRootNodeAction;
     
     public Action editRootAction;
@@ -92,13 +92,13 @@ public class SgfActionList implements GoGameListener{
     public Action stopAction;
     
     public SgfActionList(SgfGoGame goGame) {
-        closeAction = new CloseAction(goGame);
+        closeAction = new QuitAction(goGame);
         
         newAction = new NewAction(goGame);
         openAction = new OpenAction(goGame);
         saveAsAction = new SaveAsAction(goGame);
         saveAction = new SaveAction(goGame, saveAsAction);
-        saveImageAction = new SaveImageAction(goGame);
+        exportImageAction = new ExportImageAction(goGame);
         
         addRootNodeAction = new AddTreeAction(goGame);
         

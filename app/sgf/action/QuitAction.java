@@ -14,40 +14,39 @@
  *
  *  You should have received a copy of the GNU General Public License
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+ */   
 
 package app.sgf.action;
 
 import go.GoGame;
-import go.gui.SaveImagePanel;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
-import javax.swing.JOptionPane;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 
-public class SaveImageAction extends AbstractAction {
-    private static final String OK = "OK";
-    private static final String CANCEL = "キャンセル";
+
+public class QuitAction extends AbstractAction{
+    private static final String QUIT = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("QUIT");
+    private static final String ICON = "image/application-exit.png";
     
-    private static final String SAVE_IMAGE = "画像で保存";
     private GoGame goGame;
 
-    public SaveImageAction(GoGame goGame) {
-        putValue(Action.NAME, SAVE_IMAGE);
-
+    public QuitAction(GoGame goGame) {
+        ClassLoader cl = this.getClass().getClassLoader();
+        Icon icon  = new ImageIcon(cl.getResource(ICON));
+        
+        putValue(Action.NAME, QUIT);
+        putValue(Action.SHORT_DESCRIPTION, QUIT);
+        putValue(Action.SMALL_ICON, icon);
+        putValue(Action.LARGE_ICON_KEY, icon);
+        
         this.goGame = goGame;
     }
 
     public void actionPerformed(ActionEvent e) {
-        SaveImagePanel panel = new SaveImagePanel(goGame);
-        
-        String[] options = {OK, CANCEL};
-        int retval = JOptionPane.showOptionDialog(goGame.getWindow(), panel, "Save Image",
-                JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
-                null, options, options[0]);
-
-        if(retval == 0){
-            panel.save();
-        }
+        JFrame frame = goGame.getWindow();
+        frame.setVisible(false);
     }
 }

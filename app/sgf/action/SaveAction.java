@@ -27,8 +27,7 @@ import javax.swing.ImageIcon;
 import sgf.GameTree;
 
 public class SaveAction extends AbstractAction{
-    private static final String SAVE = "保存";
-    
+    private static final String SAVE = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("SAVE");
     private static final String ICON = "image/document-save.png";
     
     private GoGame goGame;

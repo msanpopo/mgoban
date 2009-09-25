@@ -52,18 +52,6 @@ import sgf.property.NoTypeProperty;
 
 public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, OperationPanel, DocumentListener, ActionListener{
     
-    private static final String FILE = "ファイル";
-    private static final String EDIT = "編集";
-    private static final String MOVE = "移動";
-    private static final String GAME = "対局";
-    private static final String SETTING = "設定";
-    
-    private static final String EDIT_ROOT = "基本情報";
-    private static final String EDIT_MOVE = "着手情報";
-    private static final String EDIT_SETUP = "セットアップ情報";
-    private static final String EDIT_NO_TYPE = "その他情報";
-    private static final String EDIT_GAME_INFO = "対局情報";
-    
     private static final String SETTING_BOARD = "碁盤表示";
     private static final String MOVE_NUMBER = "着手番号";
     private static final String KO = "コウ";
@@ -110,18 +98,6 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         
         
         moveModeToggleButton.setSelected(true);
-        
-        fileMenu.setText(FILE);
-        editMenu.setText(EDIT);
-        moveMenu.setText(MOVE);
-        gameMenu.setText(GAME);
-        settingMenu.setText(SETTING);
-        
-        editRootMenu.setText(EDIT_ROOT);
-        editMoveMenu.setText(EDIT_MOVE);
-        editSetupMenu.setText(EDIT_SETUP);
-        editNoTypeMenu.setText(EDIT_NO_TYPE);
-        editGameInfoMenu.setText(EDIT_GAME_INFO);
         
         settingBoardMenu.setText(SETTING_BOARD);
         moveNumberCheckBoxMenuItem.setText(MOVE_NUMBER);
@@ -172,14 +148,13 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         setAction(nextButton, actionList.goNextAction);
         
         setAction(startButton, actionList.startAction);
-        setAction(pauseButton, actionList.pauseAction);
         setAction(stopButton, actionList.stopAction);
         
         newMenuItem.setAction(actionList.newAction);
         openMenuItem.setAction(actionList.openAction);
         saveMenuItem.setAction(actionList.saveAction);
         saveAsMenuItem.setAction(actionList.saveAsAction);
-        saveImageMenuItem.setAction(actionList.saveImageAction);
+        saveImageMenuItem.setAction(actionList.exportImageAction);
         closeMenuItem.setAction(actionList.closeAction);
         
         editRootMenuItem.setAction(actionList.editRootAction);
@@ -206,7 +181,6 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         nextMenuItem.setAction(actionList.goNextAction);
         
         startMenuItem.setAction(actionList.startAction);
-        pauseMenuItem.setAction(actionList.pauseAction);
         stopMenuItem.setAction(actionList.stopAction);
         
         nodeNameTextField.addActionListener(this);
@@ -513,7 +487,6 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         playingLabel = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
         startButton = new javax.swing.JButton();
-        pauseButton = new javax.swing.JButton();
         stopButton = new javax.swing.JButton();
         jToolBar5 = new javax.swing.JToolBar();
         moveModeToggleButton = new javax.swing.JToggleButton();
@@ -565,7 +538,6 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         nextMenuItem = new javax.swing.JMenuItem();
         gameMenu = new javax.swing.JMenu();
         startMenuItem = new javax.swing.JMenuItem();
-        pauseMenuItem = new javax.swing.JMenuItem();
         stopMenuItem = new javax.swing.JMenuItem();
         settingMenu = new javax.swing.JMenu();
         settingBoardMenu = new javax.swing.JMenu();
@@ -599,11 +571,11 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         boardPanelBase.setLayout(boardPanelBaseLayout);
         boardPanelBaseLayout.setHorizontalGroup(
             boardPanelBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 595, Short.MAX_VALUE)
+            .addGap(0, 596, Short.MAX_VALUE)
         );
         boardPanelBaseLayout.setVerticalGroup(
             boardPanelBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 508, Short.MAX_VALUE)
+            .addGap(0, 510, Short.MAX_VALUE)
         );
 
         hSplitPane.setLeftComponent(boardPanelBase);
@@ -614,7 +586,7 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         whitePlayerInfoBase.setLayout(whitePlayerInfoBaseLayout);
         whitePlayerInfoBaseLayout.setHorizontalGroup(
             whitePlayerInfoBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 324, Short.MAX_VALUE)
+            .addGap(0, 325, Short.MAX_VALUE)
         );
         whitePlayerInfoBaseLayout.setVerticalGroup(
             whitePlayerInfoBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -627,7 +599,7 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         blackPlayerInfoBase.setLayout(blackPlayerInfoBaseLayout);
         blackPlayerInfoBaseLayout.setHorizontalGroup(
             blackPlayerInfoBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 324, Short.MAX_VALUE)
+            .addGap(0, 325, Short.MAX_VALUE)
         );
         blackPlayerInfoBaseLayout.setVerticalGroup(
             blackPlayerInfoBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -645,7 +617,7 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
             moveInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(moveInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(moveInfoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                .addComponent(moveInfoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
                 .addContainerGap())
         );
         moveInfoPanelLayout.setVerticalGroup(
@@ -662,7 +634,8 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
             }
         });
 
-        passButton.setText("Pass");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/resource/Resource"); // NOI18N
+        passButton.setText(bundle.getString("Pass")); // NOI18N
         passButton.setFocusPainted(false);
         passButton.setFocusable(false);
         passButton.addActionListener(new java.awt.event.ActionListener() {
@@ -686,7 +659,6 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         });
 
         vSplitPane.setDividerLocation(180);
-        vSplitPane.setDividerSize(6);
         vSplitPane.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
 
         treePanelBase.setPreferredSize(new java.awt.Dimension(100, 50));
@@ -700,11 +672,11 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         treePanelBase.setLayout(treePanelBaseLayout);
         treePanelBaseLayout.setHorizontalGroup(
             treePanelBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 326, Short.MAX_VALUE)
+            .addGap(0, 329, Short.MAX_VALUE)
         );
         treePanelBaseLayout.setVerticalGroup(
             treePanelBaseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 55, Short.MAX_VALUE)
+            .addGap(0, 39, Short.MAX_VALUE)
         );
 
         vSplitPane.setBottomComponent(treePanelBase);
@@ -730,18 +702,18 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
                 .addComponent(passButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(undoButton)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(scoreButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(doneButton)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(217, Short.MAX_VALUE))
             .addComponent(blackPlayerInfoBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(whitePlayerInfoBase, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(moveInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(nodeNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
-            .addComponent(vSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+            .addComponent(nodeNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+            .addComponent(vSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
         );
 
         jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {doneButton, passButton, scoreButton, undoButton});
@@ -765,7 +737,7 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nodeNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(vSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))
+                .addComponent(vSplitPane, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
         );
 
         hSplitPane.setRightComponent(jPanel3);
@@ -776,19 +748,16 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         newButton.setText("New");
         newButton.setBorderPainted(false);
         newButton.setFocusable(false);
-        newButton.setOpaque(false);
         jToolBar2.add(newButton);
 
         openButton.setText("Open");
         openButton.setBorderPainted(false);
         openButton.setFocusable(false);
-        openButton.setOpaque(false);
         jToolBar2.add(openButton);
 
         saveButton.setText("Save");
         saveButton.setBorderPainted(false);
         saveButton.setFocusable(false);
-        saveButton.setOpaque(false);
         jToolBar2.add(saveButton);
 
         jToolBar1.setFloatable(false);
@@ -797,7 +766,6 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         pivotToggleButton.setText("Pivot");
         pivotToggleButton.setBorderPainted(false);
         pivotToggleButton.setFocusable(false);
-        pivotToggleButton.setOpaque(false);
         jToolBar1.add(pivotToggleButton);
 
         jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -806,23 +774,19 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         topButton.setText("Top");
         topButton.setBorderPainted(false);
         topButton.setFocusable(false);
-        topButton.setOpaque(false);
         jToolBar1.add(topButton);
 
         parentButton.setBorderPainted(false);
         parentButton.setFocusable(false);
-        parentButton.setOpaque(false);
         jToolBar1.add(parentButton);
 
         childButton.setBorderPainted(false);
         childButton.setFocusable(false);
-        childButton.setOpaque(false);
         jToolBar1.add(childButton);
 
         bottomButton.setText("Bottom");
         bottomButton.setBorderPainted(false);
         bottomButton.setFocusable(false);
-        bottomButton.setOpaque(false);
         jToolBar1.add(bottomButton);
 
         jLabel1.setText("   ");
@@ -830,12 +794,10 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
 
         prevButton.setBorderPainted(false);
         prevButton.setFocusable(false);
-        prevButton.setOpaque(false);
         jToolBar1.add(prevButton);
 
         nextButton.setBorderPainted(false);
         nextButton.setFocusable(false);
-        nextButton.setOpaque(false);
         jToolBar1.add(nextButton);
 
         jToolBar3.setFloatable(false);
@@ -844,13 +806,11 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         deleteNodeButton.setText("Delete");
         deleteNodeButton.setBorderPainted(false);
         deleteNodeButton.setFocusable(false);
-        deleteNodeButton.setOpaque(false);
         jToolBar3.add(deleteNodeButton);
 
         insertNodeButton.setText("Insert");
         insertNodeButton.setBorderPainted(false);
         insertNodeButton.setFocusable(false);
-        insertNodeButton.setOpaque(false);
         jToolBar3.add(insertNodeButton);
 
         jToolBar4.setFloatable(false);
@@ -867,19 +827,11 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         startButton.setText("Start");
         startButton.setBorderPainted(false);
         startButton.setFocusable(false);
-        startButton.setOpaque(false);
         jToolBar4.add(startButton);
-
-        pauseButton.setText("Pause");
-        pauseButton.setBorderPainted(false);
-        pauseButton.setFocusable(false);
-        pauseButton.setOpaque(false);
-        jToolBar4.add(pauseButton);
 
         stopButton.setText("Stop");
         stopButton.setBorderPainted(false);
         stopButton.setFocusable(false);
-        stopButton.setOpaque(false);
         jToolBar4.add(stopButton);
 
         jToolBar5.setFloatable(false);
@@ -888,7 +840,6 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         moveModeToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/move.png"))); // NOI18N
         moveModeToggleButton.setBorderPainted(false);
         moveModeToggleButton.setFocusable(false);
-        moveModeToggleButton.setOpaque(false);
         moveModeToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 moveModeToggleButtonActionPerformed(evt);
@@ -900,7 +851,6 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         setupModeToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/setup.png"))); // NOI18N
         setupModeToggleButton.setBorderPainted(false);
         setupModeToggleButton.setFocusable(false);
-        setupModeToggleButton.setOpaque(false);
         setupModeToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 setupModeToggleButtonActionPerformed(evt);
@@ -912,7 +862,6 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         markModeToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/mark.png"))); // NOI18N
         markModeToggleButton.setBorderPainted(false);
         markModeToggleButton.setFocusable(false);
-        markModeToggleButton.setOpaque(false);
         markModeToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 markModeToggleButtonActionPerformed(evt);
@@ -924,7 +873,6 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         charLabelModeToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/char.png"))); // NOI18N
         charLabelModeToggleButton.setBorderPainted(false);
         charLabelModeToggleButton.setFocusable(false);
-        charLabelModeToggleButton.setOpaque(false);
         charLabelModeToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 charLabelModeToggleButtonActionPerformed(evt);
@@ -936,7 +884,6 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         numberLabelModeToggleButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/number.png"))); // NOI18N
         numberLabelModeToggleButton.setBorderPainted(false);
         numberLabelModeToggleButton.setFocusable(false);
-        numberLabelModeToggleButton.setOpaque(false);
         numberLabelModeToggleButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 numberLabelModeToggleButtonActionPerformed(evt);
@@ -944,7 +891,7 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         });
         jToolBar5.add(numberLabelModeToggleButton);
 
-        fileMenu.setText("File");
+        fileMenu.setText(bundle.getString("File")); // NOI18N
 
         newMenuItem.setText("New");
         fileMenu.add(newMenuItem);
@@ -968,23 +915,23 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
 
         jMenuBar1.add(fileMenu);
 
-        editMenu.setText("Edit");
+        editMenu.setText(bundle.getString("Edit")); // NOI18N
 
-        editRootMenu.setText("Root");
+        editRootMenu.setText(bundle.getString("RootProperty")); // NOI18N
 
         editRootMenuItem.setText("Item");
         editRootMenu.add(editRootMenuItem);
 
         editMenu.add(editRootMenu);
 
-        editMoveMenu.setText("Move");
+        editMoveMenu.setText(bundle.getString("MoveProperty")); // NOI18N
 
         editMoveMenuItem.setText("Item");
         editMoveMenu.add(editMoveMenuItem);
 
         editMenu.add(editMoveMenu);
 
-        editGameInfoMenu.setText("Game Info");
+        editGameInfoMenu.setText(bundle.getString("GameInfoProperty")); // NOI18N
 
         editGameInfoMenuItem.setText("Item");
         editGameInfoMenu.add(editGameInfoMenuItem);
@@ -994,7 +941,7 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
 
         editMenu.add(editGameInfoMenu);
 
-        editSetupMenu.setText("Setup");
+        editSetupMenu.setText(bundle.getString("SetupProperty")); // NOI18N
 
         editSetupMenuItem.setText("Item");
         editSetupMenu.add(editSetupMenuItem);
@@ -1004,7 +951,7 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
 
         editMenu.add(editSetupMenu);
 
-        editNoTypeMenu.setText("Other");
+        editNoTypeMenu.setText(bundle.getString("NoTypeProperty")); // NOI18N
 
         editNoTypeMenuItem.setText("Item");
         editNoTypeMenu.add(editNoTypeMenuItem);
@@ -1051,7 +998,7 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
 
         jMenuBar1.add(editMenu);
 
-        moveMenu.setText("Move");
+        moveMenu.setText(bundle.getString("Move")); // NOI18N
 
         topMenuItem.setText("Item");
         moveMenu.add(topMenuItem);
@@ -1074,20 +1021,17 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
 
         jMenuBar1.add(moveMenu);
 
-        gameMenu.setText("Game");
+        gameMenu.setText(bundle.getString("Game")); // NOI18N
 
         startMenuItem.setText("Start");
         gameMenu.add(startMenuItem);
-
-        pauseMenuItem.setText("Pause");
-        gameMenu.add(pauseMenuItem);
 
         stopMenuItem.setText("Stop");
         gameMenu.add(stopMenuItem);
 
         jMenuBar1.add(gameMenu);
 
-        settingMenu.setText("Setting");
+        settingMenu.setText(bundle.getString("Setting")); // NOI18N
 
         settingBoardMenu.setText("Board");
 
@@ -1346,8 +1290,6 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JButton parentButton;
     private javax.swing.JButton passButton;
-    private javax.swing.JButton pauseButton;
-    private javax.swing.JMenuItem pauseMenuItem;
     private javax.swing.JToggleButton pivotToggleButton;
     private javax.swing.JMenuItem plBlackMenuItem;
     private javax.swing.JMenu plMenu;

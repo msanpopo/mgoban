@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.3" maxVersion="1.3" type="org.netbeans.modules.form.forminfo.JPanelFormInfo">
+  <Properties>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[235, 179]"/>
+    </Property>
+  </Properties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -19,24 +24,20 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jSeparator1" alignment="0" pref="198" max="32767" attributes="0"/>
-                  <Component id="typeComboBox" alignment="0" pref="198" max="32767" attributes="0"/>
+                  <Component id="jSeparator1" alignment="0" pref="183" max="32767" attributes="0"/>
+                  <Component id="typeComboBox" alignment="0" pref="183" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="mainTimeLabel" min="-2" max="-2" attributes="1"/>
+                          <Component id="byoYomiTimeLabel" alignment="1" min="-2" max="-2" attributes="1"/>
                           <Component id="movesLabel" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="mainTimeSpinner" pref="81" max="32767" attributes="1"/>
-                          <Component id="movesSpinner" alignment="0" pref="81" max="32767" attributes="1"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="movesSpinner" max="32767" attributes="1"/>
+                          <Component id="byoYomiTimeSpinner" alignment="1" max="32767" attributes="1"/>
+                          <Component id="mainTimeSpinner" alignment="1" min="-2" pref="66" max="-2" attributes="1"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="byoYomiTimeLabel" min="-2" max="-2" attributes="1"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="byoYomiTimeSpinner" pref="81" max="32767" attributes="1"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -73,21 +74,27 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="movesLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Moves :"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="app/resource/Resource.properties" key="Moves" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="movesSpinner">
     </Component>
     <Component class="javax.swing.JLabel" name="mainTimeLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Main Time :"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="app/resource/Resource.properties" key="MainTime" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="mainTimeSpinner">
     </Component>
     <Component class="javax.swing.JLabel" name="byoYomiTimeLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Byo-Yomi Time :"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="app/resource/Resource.properties" key="ByoYomiTime" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JSpinner" name="byoYomiTimeSpinner">
