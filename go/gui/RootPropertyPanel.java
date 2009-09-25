@@ -22,12 +22,6 @@ import sgf.property.PropertyId;
 import sgf.property.RootProperty;
 
 public class RootPropertyPanel extends javax.swing.JPanel {
-    private static final String APPLICATION = "アプリケーション";
-    private static final String CHARSET = "文字セット";
-    private static final String FILEFORMAT = "フォーマット";
-    private static final String GAME = "ゲーム種別";
-    private static final String STYLE = "表示スタイル";
-    private static final String SIZE = "盤サイズ";
     
     private RootProperty prop;
     
@@ -35,13 +29,6 @@ public class RootPropertyPanel extends javax.swing.JPanel {
         this.prop = prop;
         
         initComponents();
-        
-        apLabel.setText(APPLICATION);
-        caLabel.setText(CHARSET);
-        ffLabel.setText(FILEFORMAT);
-        gmLabel.setText(GAME);
-        stLabel.setText(STYLE);
-        szLabel.setText(SIZE);
         
         apTextField.setText(prop.getApplication());
         caTextField.setText(prop.getCharset());
@@ -97,22 +84,22 @@ public class RootPropertyPanel extends javax.swing.JPanel {
 
         gmLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/resource/Resource"); // NOI18N
-        gmLabel.setText(bundle.getString("Game")); // NOI18N
+        gmLabel.setText(bundle.getString("propGM")); // NOI18N
 
         ffLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        ffLabel.setText(bundle.getString("Fileformat")); // NOI18N
+        ffLabel.setText(bundle.getString("propFF")); // NOI18N
 
         caLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        caLabel.setText(bundle.getString("Charset")); // NOI18N
+        caLabel.setText(bundle.getString("propCA")); // NOI18N
 
         apLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        apLabel.setText(bundle.getString("Application")); // NOI18N
+        apLabel.setText(bundle.getString("propAP")); // NOI18N
 
         stLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        stLabel.setText(bundle.getString("Style")); // NOI18N
+        stLabel.setText(bundle.getString("propST")); // NOI18N
 
         szLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        szLabel.setText(bundle.getString("Size")); // NOI18N
+        szLabel.setText(bundle.getString("propSZ")); // NOI18N
 
         szTextField.setEnabled(false);
 

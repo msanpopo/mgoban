@@ -27,7 +27,7 @@ import javax.swing.ImageIcon;
 import sgf.GameTree;
 
 public class DeleteNodeAction extends AbstractAction{
-    private static final String DELETE = "ノード削除";
+    private static final String DELETE = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("DeleteNode");
     
     private static final String ICON = "image/edit-delete.png";
     

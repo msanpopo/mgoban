@@ -20,40 +20,40 @@ package sgf.property;
 import sgf.value.ValueDouble;
 
 public enum MoveAnnotation {
-    UNKNOWN("", PropertyId.UNKNOWN),
-    GOOD("Good", PropertyId.TE),
-    VERY_GOOD("Very good", PropertyId.TE),
-    BAD("Bad", PropertyId.BM),
-    VERY_BAD("Very bad", PropertyId.BM),
-    DOUBTFUL("Doubtful", PropertyId.DO),
-    INTERESTING("Interesting", PropertyId.IT);
-    
-    private String message;
-    private PropertyId id;
 
-    private MoveAnnotation(String message, PropertyId id) {
-        this.message = message;
+    UNKNOWN(PropertyId.UNKNOWN, ""),
+    GOOD(PropertyId.TE, java.util.ResourceBundle.getBundle("app/resource/Resource").getString("MoveAnnotationGood")),
+    VERY_GOOD(PropertyId.TE, java.util.ResourceBundle.getBundle("app/resource/Resource").getString("MoveAnnotationVeryGood")),
+    BAD(PropertyId.BM, java.util.ResourceBundle.getBundle("app/resource/Resource").getString("MoveAnnotationBad")),
+    VERY_BAD(PropertyId.BM, java.util.ResourceBundle.getBundle("app/resource/Resource").getString("MoveAnnotationVeryBad")),
+    DOUBTFUL(PropertyId.DO, java.util.ResourceBundle.getBundle("app/resource/Resource").getString("MoveAnnotationDoubtful")),
+    INTERESTING(PropertyId.IT, java.util.ResourceBundle.getBundle("app/resource/Resource").getString("MoveAnnotationInteresting"));
+
+    private PropertyId id;
+    private String message;
+
+    private MoveAnnotation(PropertyId id, String message) {
         this.id = id;
+        this.message = message;
+
     }
-    
-    public static MoveAnnotation propertyToAnnotation(Property p){
+
+    public static MoveAnnotation propertyToAnnotation(Property p) {
         PropertyId pid = p.getId();
-        switch(pid){
-            case TE:
-            {
-                ValueDouble vd = (ValueDouble)p.getValue();
-                if(vd.isNormal()){
+        switch (pid) {
+            case TE: {
+                ValueDouble vd = (ValueDouble) p.getValue();
+                if (vd.isNormal()) {
                     return GOOD;
-                }else{
+                } else {
                     return VERY_GOOD;
                 }
             }
-            case BM:
-            {
-                ValueDouble vd = (ValueDouble)p.getValue();
-                if(vd.isNormal()){
+            case BM: {
+                ValueDouble vd = (ValueDouble) p.getValue();
+                if (vd.isNormal()) {
                     return BAD;
-                }else{
+                } else {
                     return VERY_BAD;
                 }
             }
@@ -93,17 +93,17 @@ public enum MoveAnnotation {
 
         return p;
     }
-    
-    public boolean equals(PropertyId propId){
-        if(id == propId){
+
+    public boolean equals(PropertyId propId) {
+        if (id == propId) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return message;
     }
 }

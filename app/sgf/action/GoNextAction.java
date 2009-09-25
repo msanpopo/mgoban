@@ -29,7 +29,7 @@ import javax.swing.KeyStroke;
 import sgf.GameTree;
 
 public class GoNextAction extends AbstractAction{
-    private static final String NEXT = "次の変化へ";
+    private static final String NEXT = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("NextVariation");
     
     private static final String ICON = "image/go-down.png";
     

@@ -27,7 +27,7 @@ import javax.swing.ImageIcon;
 import sgf.GameTree;
 
 public class GoTopAction extends AbstractAction{
-    private static final String TOP = "先頭へ";
+    private static final String TOP = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("TopNode");
     
     private static final String ICON = "image/go-first.png";
     
