@@ -29,7 +29,7 @@ import javax.swing.KeyStroke;
 import sgf.GameTree;
 
 public class GoParentAction extends AbstractAction{
-    private static final String GO_PARENT = "前へ";
+    private static final String GO_PARENT = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("PreviousNode");
     
     private static final String ICON = "image/go-previous.png";
     

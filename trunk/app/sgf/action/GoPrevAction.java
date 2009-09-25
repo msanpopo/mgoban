@@ -29,7 +29,7 @@ import javax.swing.KeyStroke;
 import sgf.GameTree;
 
 public class GoPrevAction extends AbstractAction{
-    private static final String PREV = "前の変化へ";
+    private static final String PREV = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("PreviousVariation");
     
     private static final String ICON = "image/go-up.png";
     

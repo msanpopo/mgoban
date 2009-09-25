@@ -29,7 +29,7 @@ import sgf.GameTree;
 
 
 public class PivotAction extends AbstractAction{
-    private static final String PIVOT = "ピボット";
+    private static final String PIVOT = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Pin");
     
     private static final String ICON = "image/pivot.png";
     

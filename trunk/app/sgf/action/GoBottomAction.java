@@ -27,7 +27,7 @@ import javax.swing.ImageIcon;
 import sgf.GameTree;
 
 public class GoBottomAction extends AbstractAction{
-    private static final String BOTTOM = "後端へ";
+    private static final String BOTTOM = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("BottomNode");
     
     private static final String ICON = "image/go-last.png";
     

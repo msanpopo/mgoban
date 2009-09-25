@@ -25,21 +25,6 @@ import sgf.property.PropertyId;
 
 public class MovePropertyPanel extends javax.swing.JPanel {
 
-    private static final String MOVE = "着手";
-    private static final String MOVE_NUMBER = "番号";
-    private static final String KO = "ルール無視";
-    private static final String ANNOTATION = "評価";
-    private static final String BLACK = "黒";
-    private static final String WHITE = "白";
-    private static final String TIME_LEFT = "残り時間";
-    private static final String STONES = "残り回数";
-    private static final String NOT_SELECTED = "";
-    private static final String GOOD = "";
-    private static final String VERY_GOOD = "";
-    private static final String BAD = "悪手";
-    private static final String VERY_BAD = "大悪手";
-    private static final String DOUBTFUL = "疑問手";
-    private static final String INTERESTING = "";
     private MoveProperty prop;
 
     public MovePropertyPanel(MoveProperty prop) {
@@ -51,15 +36,6 @@ public class MovePropertyPanel extends javax.swing.JPanel {
         }
 
         initComponents();
-
-        moveLabel.setText(MOVE);
-        mnLabel.setText(MOVE_NUMBER);
-        koLabel.setText(KO);
-        annotationLabel.setText(ANNOTATION);
-        blackTimeLeftLabel.setText(BLACK + " " + TIME_LEFT);
-        blackStonesLabel.setText(BLACK + " " + STONES);
-        whiteTimeLeftLabel.setText(WHITE + " " + TIME_LEFT);
-        whiteStonesLabel.setText(WHITE + " " + STONES);
 
         annotationComboBox.setModel(model);
 
@@ -155,9 +131,18 @@ public class MovePropertyPanel extends javax.swing.JPanel {
         whiteTimeLeftLabel = new javax.swing.JLabel();
         owTextField = new javax.swing.JTextField();
         wlTextField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         blackTimeLeftLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        blackTimeLeftLabel.setText("Black Time Left:");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/resource/Resource"); // NOI18N
+        blackTimeLeftLabel.setText(bundle.getString("propBL")); // NOI18N
 
         blTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,97 +150,128 @@ public class MovePropertyPanel extends javax.swing.JPanel {
             }
         });
 
-        blackStonesLabel.setText("Black Moves left:");
+        blackStonesLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        blackStonesLabel.setText(bundle.getString("propOB")); // NOI18N
 
-        moveLabel.setText("Move:");
+        moveLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        moveLabel.setText(bundle.getString("ShowMove")); // NOI18N
 
         moveTextField.setEnabled(false);
 
-        mnLabel.setText("Move Number:");
+        mnLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        mnLabel.setText(bundle.getString("propMN")); // NOI18N
 
-        koLabel.setText("Ko:");
+        koLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        koLabel.setText(bundle.getString("propKO")); // NOI18N
 
         koCheckBox.setText(" ");
 
-        annotationLabel.setText("Annotation:");
+        annotationLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        annotationLabel.setText(bundle.getString("MoveAnnotation")); // NOI18N
 
-        whiteStonesLabel.setText("White Moves left:");
+        whiteStonesLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        whiteStonesLabel.setText(bundle.getString("propOW")); // NOI18N
 
         whiteTimeLeftLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        whiteTimeLeftLabel.setText("White Time Left:");
+        whiteTimeLeftLabel.setText(bundle.getString("propWL")); // NOI18N
+
+        jLabel1.setText(":");
+
+        jLabel2.setText(":");
+
+        jLabel3.setText(":");
+
+        jLabel4.setText(":");
+
+        jLabel5.setText(":");
+
+        jLabel6.setText(":");
+
+        jLabel7.setText(":");
+
+        jLabel8.setText(":");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(whiteStonesLabel)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addGap(57, 57, 57)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(annotationLabel)
-                                .addComponent(koLabel)
-                                .addComponent(mnLabel)
-                                .addComponent(moveLabel)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(whiteTimeLeftLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(blackStonesLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(blackTimeLeftLabel)))))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(annotationLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addComponent(whiteStonesLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addComponent(whiteTimeLeftLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(blackTimeLeftLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addComponent(blackStonesLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addComponent(koLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addComponent(mnLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addComponent(moveLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(owTextField)
-                    .addComponent(wlTextField)
-                    .addComponent(obTextField)
-                    .addComponent(blTextField)
-                    .addComponent(mnTextField)
-                    .addComponent(koCheckBox)
-                    .addComponent(annotationComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(moveTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(blTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                    .addComponent(annotationComboBox, 0, 152, Short.MAX_VALUE)
+                    .addComponent(obTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                    .addComponent(owTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                    .addComponent(wlTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
+                    .addComponent(moveTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                    .addComponent(mnTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                    .addComponent(koCheckBox))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                     .addComponent(moveLabel)
+                    .addComponent(jLabel1)
                     .addComponent(moveTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(mnLabel)
+                    .addComponent(jLabel2)
                     .addComponent(mnTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(koCheckBox)
                     .addComponent(koLabel)
-                    .addComponent(koCheckBox))
+                    .addComponent(jLabel3))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(annotationLabel)
-                    .addComponent(annotationComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel4)
+                    .addComponent(annotationComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(annotationLabel))
+                .addGap(25, 25, 25)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(blTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
                     .addComponent(blackTimeLeftLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(blackStonesLabel)
-                    .addComponent(obTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(obTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(blackStonesLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(whiteTimeLeftLabel)
-                    .addComponent(wlTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(wlTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7)
+                    .addComponent(whiteTimeLeftLabel))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(whiteStonesLabel)
-                    .addComponent(owTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(owTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(whiteStonesLabel))
+                .addGap(22, 22, 22))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -269,6 +285,14 @@ public class MovePropertyPanel extends javax.swing.JPanel {
     private javax.swing.JTextField blTextField;
     private javax.swing.JLabel blackStonesLabel;
     private javax.swing.JLabel blackTimeLeftLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JCheckBox koCheckBox;
     private javax.swing.JLabel koLabel;
     private javax.swing.JLabel mnLabel;

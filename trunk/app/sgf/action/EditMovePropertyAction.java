@@ -18,7 +18,6 @@
 
 package app.sgf.action;
 
-import app.sgf.*;
 import go.gui.MovePropertyPanel;
 import go.GoGame;
 import java.awt.event.ActionEvent;
@@ -30,8 +29,8 @@ import sgf.GoNode;
 import sgf.property.MoveProperty;
 
 public class EditMovePropertyAction extends AbstractAction {
-    private static final String OK = "OK";
-    private static final String EDIT_MOVE = "編集";
+    private static final String OK = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("OK");
+    private static final String EDIT_MOVE = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Edit");
     private GoGame goGame;
 
     public EditMovePropertyAction(GoGame goGame) {
@@ -48,7 +47,7 @@ public class EditMovePropertyAction extends AbstractAction {
             MovePropertyPanel panel = new MovePropertyPanel(mp);
 
             String[] options = {OK};
-            int retval = JOptionPane.showOptionDialog(goGame.getWindow(), panel, "Edit move property",
+            int retval = JOptionPane.showOptionDialog(goGame.getWindow(), panel, java.util.ResourceBundle.getBundle("app/resource/Resource").getString("MoveProperty"),
                     JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                     null, options, options[0]);
 
