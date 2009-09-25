@@ -37,8 +37,10 @@ public class PauseGameAction extends AbstractAction{
         Icon icon  = new ImageIcon(cl.getResource(ICON));
         
         putValue(Action.NAME, PAUSE_GAME);
+        putValue(Action.SHORT_DESCRIPTION, PAUSE_GAME);
+        putValue(Action.SMALL_ICON, icon);
         putValue(Action.LARGE_ICON_KEY, icon);
-        
+
         this.goGame = goGame;
     }
     

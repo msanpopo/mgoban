@@ -29,10 +29,6 @@ import sgf.property.GameInfoProperty;
 import sgf.property.SetupProperty;
 
 public class NewGameTreePanel extends javax.swing.JPanel {
-    private static final String BOARDSIZE = "盤サイズ";
-    private static final String HANDICAP = "置き石";
-    private static final String KOMI = "コミ";
-    
     private SpinnerListModel boardSizeModel;
     private SpinnerListModel handicapModel;
     private SpinnerNumberModel komiModel;
@@ -49,11 +45,7 @@ public class NewGameTreePanel extends javax.swing.JPanel {
         komiModel = new SpinnerNumberModel(6.5, -100.0, 100.0, 0.5);
         
         initComponents();
-        
-        boardSizeLabel.setText(BOARDSIZE);
-        handicapLabel.setText(HANDICAP);
-        komiLabel.setText(KOMI);
-        
+
         boardSizeSpinner.setModel(boardSizeModel);
         handicapSpinner.setModel(handicapModel);
         komiSpinner.setModel(komiModel);
@@ -143,11 +135,12 @@ public class NewGameTreePanel extends javax.swing.JPanel {
         komiCheckBox = new javax.swing.JCheckBox();
         jSeparator1 = new javax.swing.JSeparator();
 
-        boardSizeLabel.setText("Board Size :");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/resource/Resource"); // NOI18N
+        boardSizeLabel.setText(bundle.getString("BoardSize")); // NOI18N
 
-        komiLabel.setText("Komi :");
+        komiLabel.setText(bundle.getString("Komi")); // NOI18N
 
-        handicapLabel.setText("Handicap :");
+        handicapLabel.setText(bundle.getString("Handicap")); // NOI18N
 
         handicapSpinner.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -157,7 +150,6 @@ public class NewGameTreePanel extends javax.swing.JPanel {
 
         handicapCheckBox.setText(" ");
         handicapCheckBox.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        handicapCheckBox.setMargin(new java.awt.Insets(0, 0, 0, 0));
         handicapCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 handicapCheckBoxActionPerformed(evt);
@@ -166,7 +158,6 @@ public class NewGameTreePanel extends javax.swing.JPanel {
 
         komiCheckBox.setText(" ");
         komiCheckBox.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
-        komiCheckBox.setMargin(new java.awt.Insets(0, 0, 0, 0));
         komiCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 komiCheckBoxActionPerformed(evt);

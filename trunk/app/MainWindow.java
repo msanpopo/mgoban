@@ -18,22 +18,13 @@
 
 package app;
 
-import app.App;
-
 import javax.swing.JFrame;
 
 public class MainWindow extends JFrame {
-    private static final String NET_GO = "ネット対局";
-    private static final String LOCAL_GO = "ローカル碁盤";
-    private static final String QUIT = "終了";
     
     public MainWindow() {
         
         initComponents();
-        
-        netGoButton.setText(NET_GO);
-        localGoButton.setText(LOCAL_GO);
-        quitButton.setText(QUIT);
     }
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -44,7 +35,7 @@ public class MainWindow extends JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         localGoButton = new javax.swing.JButton();
 
-        setTitle("mGo");
+        setTitle("mGoban");
         setLocationByPlatform(true);
         addComponentListener(new java.awt.event.ComponentAdapter() {
             public void componentHidden(java.awt.event.ComponentEvent evt) {
@@ -52,7 +43,8 @@ public class MainWindow extends JFrame {
             }
         });
 
-        netGoButton.setText("Net Go");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/resource/Resource"); // NOI18N
+        netGoButton.setText(bundle.getString("NetGo")); // NOI18N
         netGoButton.setMaximumSize(null);
         netGoButton.setMinimumSize(null);
         netGoButton.setPreferredSize(null);
@@ -62,7 +54,7 @@ public class MainWindow extends JFrame {
             }
         });
 
-        quitButton.setText("Quit");
+        quitButton.setText(bundle.getString("QUIT")); // NOI18N
         quitButton.setMaximumSize(null);
         quitButton.setMinimumSize(null);
         quitButton.setPreferredSize(null);
@@ -72,7 +64,7 @@ public class MainWindow extends JFrame {
             }
         });
 
-        localGoButton.setText("Local Go");
+        localGoButton.setText(bundle.getString("LocalGo")); // NOI18N
         localGoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 localGoButtonActionPerformed(evt);

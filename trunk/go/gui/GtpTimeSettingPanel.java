@@ -22,11 +22,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.SpinnerNumberModel;
 
 public class GtpTimeSettingPanel extends javax.swing.JPanel {
-    private static final String NO_TIME_LIMIT = "時間無制限";
-    private static final String CANADIAN = "カナダ方式";
-    private static final String MAIN_TIME = "持ち時間(分)";
-    private static final String BYOYOMI_TIME = "秒読み時間(分)";
-    private static final String MOVES = "手数(手)";
+    private static final String NO_TIME_LIMIT = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("NoTimeLimit");
+    private static final String CANADIAN = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Canadian");
     
     private SpinnerNumberModel mainTimeModel;
     private SpinnerNumberModel byoYomiTimeModel;
@@ -46,10 +43,6 @@ public class GtpTimeSettingPanel extends javax.swing.JPanel {
         typeComboBox.setModel(model);
         model.setSelectedItem(NO_TIME_LIMIT);
         setEnabled(false);
-        
-        mainTimeLabel.setText(MAIN_TIME);
-        byoYomiTimeLabel.setText(BYOYOMI_TIME);
-        movesLabel.setText(MOVES);
         
         mainTimeSpinner.setModel(mainTimeModel);
         byoYomiTimeSpinner.setModel(byoYomiTimeModel);
@@ -111,11 +104,14 @@ public class GtpTimeSettingPanel extends javax.swing.JPanel {
         typeComboBox = new javax.swing.JComboBox();
         jSeparator1 = new javax.swing.JSeparator();
 
-        movesLabel.setText("Moves :");
+        setPreferredSize(new java.awt.Dimension(235, 179));
 
-        mainTimeLabel.setText("Main Time :");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/resource/Resource"); // NOI18N
+        movesLabel.setText(bundle.getString("Moves")); // NOI18N
 
-        byoYomiTimeLabel.setText("Byo-Yomi Time :");
+        mainTimeLabel.setText(bundle.getString("MainTime")); // NOI18N
+
+        byoYomiTimeLabel.setText(bundle.getString("ByoYomiTime")); // NOI18N
 
         typeComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         typeComboBox.addActionListener(new java.awt.event.ActionListener() {
@@ -131,21 +127,18 @@ public class GtpTimeSettingPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                    .addComponent(typeComboBox, 0, 189, Short.MAX_VALUE)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                    .addComponent(typeComboBox, 0, 183, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(mainTimeLabel)
+                            .addComponent(byoYomiTimeLabel)
                             .addComponent(movesLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mainTimeSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                            .addComponent(movesSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(byoYomiTimeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(byoYomiTimeSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(movesSpinner)
+                            .addComponent(byoYomiTimeSpinner)
+                            .addComponent(mainTimeSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

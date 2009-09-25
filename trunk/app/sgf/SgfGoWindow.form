@@ -8,7 +8,9 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="fileMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="File"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="app/resource/Resource.properties" key="File" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="newMenuItem">
@@ -49,12 +51,16 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="editMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Edit"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="app/resource/Resource.properties" key="Edit" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="editRootMenu">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Root"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="app/resource/Resource.properties" key="RootProperty" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="editRootMenuItem">
@@ -66,7 +72,9 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="editMoveMenu">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Move"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="app/resource/Resource.properties" key="MoveProperty" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="editMoveMenuItem">
@@ -78,7 +86,9 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="editGameInfoMenu">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Game Info"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="app/resource/Resource.properties" key="GameInfoProperty" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="editGameInfoMenuItem">
@@ -95,7 +105,9 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="editSetupMenu">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Setup"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="app/resource/Resource.properties" key="SetupProperty" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="editSetupMenuItem">
@@ -112,7 +124,9 @@
             </Menu>
             <Menu class="javax.swing.JMenu" name="editNoTypeMenu">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Other"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="app/resource/Resource.properties" key="NoTypeProperty" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
               </Properties>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="editNoTypeMenuItem">
@@ -180,7 +194,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="moveMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Move"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="app/resource/Resource.properties" key="Move" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="topMenuItem">
@@ -219,17 +235,14 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="gameMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Game"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="app/resource/Resource.properties" key="Game" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="startMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Start"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="pauseMenuItem">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Pause"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="stopMenuItem">
@@ -241,7 +254,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="settingMenu">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Setting"/>
+            <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+              <ResourceString bundle="app/resource/Resource.properties" key="Setting" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+            </Property>
           </Properties>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="settingBoardMenu">
@@ -545,7 +560,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="passButton">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Pass"/>
+                <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+                  <ResourceString bundle="app/resource/Resource.properties" key="Pass" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+                </Property>
                 <Property name="focusPainted" type="boolean" value="false"/>
                 <Property name="focusable" type="boolean" value="false"/>
               </Properties>
@@ -789,13 +806,6 @@
         <Component class="javax.swing.JButton" name="startButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Start"/>
-            <Property name="borderPainted" type="boolean" value="false"/>
-            <Property name="focusable" type="boolean" value="false"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JButton" name="pauseButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Pause"/>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>

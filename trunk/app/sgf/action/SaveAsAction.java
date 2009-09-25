@@ -29,7 +29,7 @@ import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class SaveAsAction extends AbstractAction{
-    private static final String SAVE_AS = "別名で保存";
+    private static final String SAVE_AS = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("SAVE_AS");
     
     private static final String ICON = "image/document-save-as.png";
        

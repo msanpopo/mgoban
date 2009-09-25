@@ -33,7 +33,7 @@ import sgf.GameTree;
 
 public class OpenAction extends AbstractAction {
 
-    private static final String OPEN = "開く";
+    private static final String OPEN = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Open");
     private static final String ICON = "image/document-open.png";
     private GoGame goGame;
 

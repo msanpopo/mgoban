@@ -34,14 +34,6 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 public class GtpEngineSettingPanel extends javax.swing.JPanel {
-    private static final String EDIT = "編集";
-    private static final String ADD = "追加";
-    private static final String COPY = "コピー";
-    private static final String DELETE = "削除";
-    private static final String NAME = "名前：";
-    private static final String COMMAND = "コマンド：";
-    private static final String DIR = "作業ディレクトリ：";
-    
     private static final String SELECT = "選択";
     private static final String SELECT_COMMAND = "プログラムの選択";
     private static final String SELECT_DIRECTORY = "作業ディレクトリの選択";
@@ -96,18 +88,6 @@ public class GtpEngineSettingPanel extends javax.swing.JPanel {
         }
 	
 	initComponents();
-	
-	editButton.setText(EDIT);
-        addButton.setText(ADD);
-        copyButton.setText(COPY);
-        deleteButton.setText(DELETE);
-	nameLabel.setText(NAME);
-	commandLabel.setText(COMMAND);
-	directoryLabel.setText(DIR);
-        
-	editNameLabel.setText(NAME);
-	editCommandLabel.setText(COMMAND);
-        editDirectoryLabel.setText(DIR);
 	
         commandSelectButton.setText(SELECT);
         directorySelectButton.setText(SELECT);
@@ -235,28 +215,29 @@ public class GtpEngineSettingPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        editButton.setText("Edit");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/resource/Resource"); // NOI18N
+        editButton.setText(bundle.getString("Edit")); // NOI18N
         editButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editButtonActionPerformed(evt);
             }
         });
 
-        addButton.setText("Add");
+        addButton.setText(bundle.getString("Add")); // NOI18N
         addButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addButtonActionPerformed(evt);
             }
         });
 
-        copyButton.setText("Copy");
+        copyButton.setText(bundle.getString("Copy")); // NOI18N
         copyButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 copyButtonActionPerformed(evt);
             }
         });
 
-        deleteButton.setText("Delete");
+        deleteButton.setText(bundle.getString("Delete")); // NOI18N
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
@@ -270,11 +251,11 @@ public class GtpEngineSettingPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(gtpEngineList);
 
-        nameLabel.setText("Name :");
+        nameLabel.setText(bundle.getString("Name")); // NOI18N
 
-        commandLabel.setText("Comman :");
+        commandLabel.setText(bundle.getString("Command")); // NOI18N
 
-        directoryLabel.setText("Directory :");
+        directoryLabel.setText(bundle.getString("Directory")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -285,9 +266,9 @@ public class GtpEngineSettingPanel extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(deleteButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

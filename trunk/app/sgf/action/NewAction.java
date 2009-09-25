@@ -31,10 +31,10 @@ import sgf.GameTree;
 import sgf.GoNode;
 
 public class NewAction extends AbstractAction{
-    private static final String OK = "OK";
-    private static final String CANCEL = "キャンセル";
+    private static final String OK = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("OK");
+    private static final String CANCEL = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Cancel");
     
-    private static final String NEW = "新規作成";
+    private static final String NEW = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("New");
     
     private static final String ICON = "image/document-new.png";
     

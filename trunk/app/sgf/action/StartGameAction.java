@@ -38,10 +38,10 @@ import sgf.property.GameInfoProperty;
 import sgf.property.SetupProperty;
 
 public class StartGameAction extends AbstractAction{
-    private static final String OK = "OK";
-    private static final String CANCEL = "キャンセル";
+    private static final String OK = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("OK");
+    private static final String CANCEL = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Cancel");
     
-    private static final String START_GAME = "開始";
+    private static final String START_GAME = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Start");
     
     private static final String ICON = "image/media-playback-start.png";
     
@@ -63,7 +63,7 @@ public class StartGameAction extends AbstractAction{
         GameSettingPanel panel = new GameSettingPanel(goGame);
         
         String[] options = {OK, CANCEL};
-        int retval = JOptionPane.showOptionDialog(goGame.getWindow(), panel, "Game Setting",
+        int retval = JOptionPane.showOptionDialog(goGame.getWindow(), panel, java.util.ResourceBundle.getBundle("app/resource/Resource").getString("GameSetting"),
                 JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE,
                 null, options, options[0]);
         
@@ -117,7 +117,6 @@ public class StartGameAction extends AbstractAction{
                 
             }else{
                 goGame.setHumanPlayer(GoColor.BLACK);
-                bName = "HumanPlayer";
             }
             
             if(panel.whiteIsEngine()){
@@ -136,7 +135,6 @@ public class StartGameAction extends AbstractAction{
                 
             }else{
                 goGame.setHumanPlayer(GoColor.WHITE);
-                wName = "HumanPlayer";
             }
             
             Collection<GoMove> moveList = tree.getMoveCollection();
