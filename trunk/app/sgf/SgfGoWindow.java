@@ -152,6 +152,7 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         
         newMenuItem.setAction(actionList.newAction);
         openMenuItem.setAction(actionList.openAction);
+        openClipboardMenuItem.setAction(actionList.openClipboardAction);
         saveMenuItem.setAction(actionList.saveAction);
         saveAsMenuItem.setAction(actionList.saveAsAction);
         saveImageMenuItem.setAction(actionList.exportImageAction);
@@ -498,6 +499,7 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         fileMenu = new javax.swing.JMenu();
         newMenuItem = new javax.swing.JMenuItem();
         openMenuItem = new javax.swing.JMenuItem();
+        openClipboardMenuItem = new javax.swing.JMenuItem();
         saveMenuItem = new javax.swing.JMenuItem();
         saveAsMenuItem = new javax.swing.JMenuItem();
         jSeparator7 = new javax.swing.JSeparator();
@@ -899,6 +901,9 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         openMenuItem.setText("Open");
         fileMenu.add(openMenuItem);
 
+        openClipboardMenuItem.setText("OpenClipboard");
+        fileMenu.add(openClipboardMenuItem);
+
         saveMenuItem.setText("Save");
         fileMenu.add(saveMenuItem);
 
@@ -1287,6 +1292,7 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
     private javax.swing.JTextField nodeNameTextField;
     private javax.swing.JToggleButton numberLabelModeToggleButton;
     private javax.swing.JButton openButton;
+    private javax.swing.JMenuItem openClipboardMenuItem;
     private javax.swing.JMenuItem openMenuItem;
     private javax.swing.JButton parentButton;
     private javax.swing.JButton passButton;

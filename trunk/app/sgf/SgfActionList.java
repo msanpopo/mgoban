@@ -46,6 +46,7 @@ import app.sgf.action.GoTopAction;
 import app.sgf.action.InsertNodeBeforeAction;
 import app.sgf.action.PivotAction;
 import app.sgf.action.ExportImageAction;
+import app.sgf.action.OpenClipboardAction;
 import go.GoClock;
 import go.GoGame;
 import go.GoGameListener;
@@ -59,6 +60,7 @@ public class SgfActionList implements GoGameListener{
     
     public Action newAction;
     public OpenAction openAction;
+    public Action openClipboardAction;
     public Action saveAction;
     public Action saveAsAction;
     public ExportImageAction exportImageAction;
@@ -96,6 +98,7 @@ public class SgfActionList implements GoGameListener{
         
         newAction = new NewAction(goGame);
         openAction = new OpenAction(goGame);
+        openClipboardAction = new OpenClipboardAction(goGame);
         saveAsAction = new SaveAsAction(goGame);
         saveAction = new SaveAction(goGame, saveAsAction);
         exportImageAction = new ExportImageAction(goGame);
