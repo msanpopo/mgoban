@@ -134,7 +134,24 @@ public class GameTree{
         fireTreeChanged();
         fireNodeMoved(null);
     }
-    
+
+    public void setNewTree(String text) {
+        SgfParser parser = new SgfParser(); // TODO:文字コード決め打ちでいいのか？
+        parser.setSgfText(text);
+        parser.parse();
+
+        GoNode rootNode = parser.getTopNode();
+        
+        file = null;
+        root = rootNode;
+        current = rootNode;
+        pivot = null;
+        boardSize = getBoardSizeFromProperty();
+
+        fireTreeChanged();
+        fireNodeMoved(null);
+    }
+
     public void setNewTree(GoNode newTree){
         file = null;
         root = newTree;
@@ -145,7 +162,9 @@ public class GameTree{
         fireTreeChanged();
         fireNodeMoved(null);
     }
-    
+
+
+
     public boolean hasFileName(){
         if(file == null){
             return false;
@@ -603,5 +622,6 @@ public class GameTree{
         
         return null;
     }
+
     
 }

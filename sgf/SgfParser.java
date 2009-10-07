@@ -24,6 +24,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import sgf.property.Property;
@@ -66,7 +67,11 @@ public class SgfParser {
         
         setSgfFile(sgfFile);
     }
-    
+
+    public void setSgfText(String text){
+        reader = new BufferedReader(new StringReader(text));
+    }
+
     class RawProp {
         private StringBuilder idStr;
         private StringBuilder valueStr;
