@@ -111,6 +111,16 @@ public class GameTree{
         
         return moveList;
     }
+
+    public String getGameDescription(){
+        GameInfoProperty gip = getGameInfoProperty();
+        if(gip != null){
+            return gip.getGameInfoDescription();
+        }else{
+            return "";
+        }
+
+    }
     
     public void setNewTree(File sgfFile, String charset){
         if(sgfFile == null){

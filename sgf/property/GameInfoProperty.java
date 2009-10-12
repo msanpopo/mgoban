@@ -34,6 +34,7 @@ public class GameInfoProperty {
     private ValueSimpleText whiteName;
     private ValueSimpleText blackRank;
     private ValueSimpleText whiteRank;
+    private ValueSimpleText result;
 
     public GameInfoProperty() {
         propList = new ArrayList<Property>();
@@ -46,6 +47,8 @@ public class GameInfoProperty {
 
         blackRank = null;
         whiteRank = null;
+
+        result = null;
     }
 
     public int getHandicap() {
@@ -115,6 +118,18 @@ public class GameInfoProperty {
         }
     }
 
+    // black[*d] vs. white[*d] : result
+    public String getGameInfoDescription() {
+        StringBuilder str = new StringBuilder();
+        str.append(getPlayerName(GoColor.BLACK));
+        str.append(" [").append(getPlayerRank(GoColor.BLACK)).append("]");
+        str.append(" vs. ");
+        str.append(getPlayerName(GoColor.WHITE));
+        str.append(" [").append(getPlayerRank(GoColor.WHITE)).append("]");
+        str.append(" : (").append(result == null ? "" : result.getText()).append(")");
+        return str.toString();
+    }
+
     public void setPlayerRank(GoColor color, String rank) {
         ValueSimpleText tmp;
         if (rank == null || rank.isEmpty()) {
@@ -130,56 +145,70 @@ public class GameInfoProperty {
         }
     }
 
+    public void setResult(String str) {
+        ValueSimpleText tmp;
+        if(str == null || str.isEmpty()){
+            tmp = null;
+        }else{
+            tmp = new ValueSimpleText(str);
+        }
+        result = tmp;
+    }
+
     private boolean hasValue(Object obj) {
         return (obj != null) ? true : false;
     }
 
     public boolean hasProperty(PropertyId id) {
         switch (id) {
-        case HA:
-            return hasValue(handicap);
-        case KM:
-            return hasValue(komi);
-        case PB:
-            return hasValue(blackName);
-        case BR:
-            return hasValue(blackRank);
-        case PW:
-            return hasValue(whiteName);
-        case WR:
-            return hasValue(whiteRank);
-        default:
-            Property p = findProperty(id);
-            return hasValue(p);
+            case HA:
+                return hasValue(handicap);
+            case KM:
+                return hasValue(komi);
+            case PB:
+                return hasValue(blackName);
+            case BR:
+                return hasValue(blackRank);
+            case PW:
+                return hasValue(whiteName);
+            case WR:
+                return hasValue(whiteRank);
+            case RE:
+                return hasValue(result);
+            default:
+                Property p = findProperty(id);
+                return hasValue(p);
         }
     }
 
     public void removeProperty(PropertyId id) {
         switch (id) {
-        case HA:
-            handicap = null;
-            break;
-        case KM:
-            komi = null;
-            break;
-        case PB:
-            blackName = null;
-            break;
-        case BR:
-            blackRank = null;
-            break;
-        case PW:
-            whiteName = null;
-            break;
-        case WR:
-            whiteRank = null;
-            break;
-        default:
-            Property p = findProperty(id);
-            if (p != null) {
-                propList.remove(p);
-            }
-            break;
+            case HA:
+                handicap = null;
+                break;
+            case KM:
+                komi = null;
+                break;
+            case PB:
+                blackName = null;
+                break;
+            case BR:
+                blackRank = null;
+                break;
+            case PW:
+                whiteName = null;
+                break;
+            case WR:
+                whiteRank = null;
+                break;
+            case RE:
+                result = null;
+            default:
+                Property p = findProperty(id);
+                if (p != null) {
+                    propList.remove(p);
+                }
+                break;
         }
     }
 
@@ -187,18 +216,17 @@ public class GameInfoProperty {
         String str = "";
 
         switch (id) {
-        case HA:
-            if (handicap != null) {
-                str = Integer.toString(getHandicap());
-            }
-            break;
-        case KM:
-            if (komi != null) {
-                str = Double.toString(getKomi());
-            }
-            break;
-        case TM:
-            {
+            case HA:
+                if (handicap != null) {
+                    str = Integer.toString(getHandicap());
+                }
+                break;
+            case KM:
+                if (komi != null) {
+                    str = Double.toString(getKomi());
+                }
+                break;
+            case TM: {
                 Property p = findProperty(id);
                 if (p != null) {
                     ValueReal v = (ValueReal) p.getValue();
@@ -206,20 +234,24 @@ public class GameInfoProperty {
                 }
             }
             break;
-        case PB:
-            str = getPlayerName(GoColor.BLACK);
-            break;
-        case BR:
-            str = getPlayerRank(GoColor.BLACK);
-            break;
-        case PW:
-            str = getPlayerName(GoColor.WHITE);
-            break;
-        case WR:
-            str = getPlayerRank(GoColor.WHITE);
-            break;
-        case GC:
-            {
+            case PB:
+                str = getPlayerName(GoColor.BLACK);
+                break;
+            case BR:
+                str = getPlayerRank(GoColor.BLACK);
+                break;
+            case PW:
+                str = getPlayerName(GoColor.WHITE);
+                break;
+            case WR:
+                str = getPlayerRank(GoColor.WHITE);
+                break;
+            case RE:
+                if(result != null){
+                    str = result.getText();
+                }
+                break;
+            case GC: {
                 Property p = findProperty(id);
                 if (p != null) {
                     ValueText v = (ValueText) p.getValue();
@@ -227,8 +259,7 @@ public class GameInfoProperty {
                 }
             }
             break;
-        default:
-            {
+            default: {
                 Property p = findProperty(id);
                 if (p != null) {
                     ValueSimpleText v = (ValueSimpleText) p.getValue();
@@ -247,16 +278,15 @@ public class GameInfoProperty {
         }
 
         switch (id) {
-        case HA:
-            int h = Integer.parseInt(str);
-            setHandicap(h);
-            break;
-        case KM:
-            double k = Double.parseDouble(str);
-            setKomi(k);
-            break;
-        case TM:
-            {
+            case HA:
+                int h = Integer.parseInt(str);
+                setHandicap(h);
+                break;
+            case KM:
+                double k = Double.parseDouble(str);
+                setKomi(k);
+                break;
+            case TM: {
                 double t = Double.parseDouble(str);
                 Property p = findProperty(id);
                 ValueReal v;
@@ -270,20 +300,21 @@ public class GameInfoProperty {
                 }
             }
             break;
-        case PB:
-            setPlayerName(GoColor.BLACK, str);
-            break;
-        case BR:
-            setPlayerRank(GoColor.BLACK, str);
-            break;
-        case PW:
-            setPlayerName(GoColor.WHITE, str);
-            break;
-        case WR:
-            setPlayerRank(GoColor.WHITE, str);
-            break;
-        case GC:
-            {
+            case PB:
+                setPlayerName(GoColor.BLACK, str);
+                break;
+            case BR:
+                setPlayerRank(GoColor.BLACK, str);
+                break;
+            case PW:
+                setPlayerName(GoColor.WHITE, str);
+                break;
+            case WR:
+                setPlayerRank(GoColor.WHITE, str);
+                break;
+            case RE:
+                setResult(str);
+            case GC: {
                 Property p = findProperty(id);
                 ValueText v;
                 if (p == null) {
@@ -296,8 +327,7 @@ public class GameInfoProperty {
                 }
             }
             break;
-        default:
-            {
+            default: {
                 Property p = findProperty(id);
                 ValueSimpleText v;
                 if (p == null) {
@@ -336,6 +366,8 @@ public class GameInfoProperty {
             blackRank = (ValueSimpleText) p.getValue();
         } else if (p.getId() == PropertyId.WR) {
             whiteRank = (ValueSimpleText) p.getValue();
+        } else if (p.getId() == PropertyId.RE) {
+            result = (ValueSimpleText) p.getValue();
         } else {
             propList.add(p);
         }
@@ -356,11 +388,12 @@ public class GameInfoProperty {
         append(str, blackRank, PropertyId.BR);
         append(str, whiteName, PropertyId.PW);
         append(str, whiteRank, PropertyId.WR);
-
+        append(str, result, PropertyId.RE);
         for (Property p : propList) {
             str.append(p.toSgfString());
         }
 
         return str.toString();
     }
+
 }
