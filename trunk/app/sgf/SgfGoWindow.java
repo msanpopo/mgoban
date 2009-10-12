@@ -270,7 +270,7 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
     
     private void setComment(GoNode node){
         textArea.getDocument().removeDocumentListener(this);
-        
+
         textArea.setText("");
         
         if(node.hasNoTypeProperty()){
@@ -291,7 +291,19 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
             playingLabel.setEnabled(false);
         }
     }
-    
+
+    private void setWindowTitle(GoGame goGame){
+        String description = goGame.getGameTree().getGameDescription();
+
+        StringBuilder title = new StringBuilder("mGoban");
+
+        if(!description.isEmpty()){
+            title.append("  :  ").append(description);
+        }
+
+        setTitle(title.toString());
+    }
+
     private void operatorChanged(){
         GoState state = goGame.getGoState();
         
@@ -357,6 +369,7 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         setMoveLabel(tree);
         setNodeName(current);
         setComment(current);
+        setWindowTitle(goGame);
         
         treePanel.update();
     }

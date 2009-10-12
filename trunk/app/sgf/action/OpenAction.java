@@ -84,7 +84,6 @@ public class OpenAction extends AbstractAction {
 
         GameTree tree = goGame.getGameTree();
         tree.setNewTree(file, charset);
-        goGame.getWindow().setTitle(file.getName());
         goGame.start();
     }
 }
