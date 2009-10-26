@@ -27,7 +27,7 @@ import sgf.property.NoTypeProperty;
 
 public class AddNoTypePropertyAction extends AbstractAction {
 
-    private static final String ADD_SNO_TYPE = "追加";
+    private static final String ADD_SNO_TYPE = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Add");
     private GoGame goGame;
 
     public AddNoTypePropertyAction(GoGame goGame) {

@@ -201,13 +201,13 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
             int n = node.getMoveNumber();
             String color;
             if(move.getColor() == GoColor.BLACK){
-                color = "黒";
+                color = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Black");
             }else{
-                color = "白";
+                color = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("White");
             }
             String v;
             if(move.isPass()){
-                v = "Pass";
+                v = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Pass");
             }else{
                 v = move.getVertex().toGtpString(tree.getBoardSize()).toUpperCase();
             }

@@ -27,7 +27,7 @@ import sgf.property.SetupProperty;
 
 public class AddSetupPropertyAction extends AbstractAction {
 
-    private static final String ADD_SETUP = "追加";
+    private static final String ADD_SETUP = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Add");
     private GoGame goGame;
 
     public AddSetupPropertyAction(GoGame goGame) {
