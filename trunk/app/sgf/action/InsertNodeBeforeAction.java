@@ -28,7 +28,7 @@ import sgf.GameTree;
 import sgf.GoNode;
 
 public class InsertNodeBeforeAction extends AbstractAction{
-    private static final String ADD = "前にノード追加";
+    private static final String ADD = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("InsertBefore");
     
     private static final String ICON = "image/list-add.png";
     

@@ -51,22 +51,6 @@ import sgf.property.MoveProperty;
 import sgf.property.NoTypeProperty;
 
 public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, OperationPanel, DocumentListener, ActionListener{
-    
-    private static final String SETTING_BOARD = "碁盤表示";
-    private static final String MOVE_NUMBER = "着手番号";
-    private static final String KO = "コウ";
-    private static final String MARK = "マーク";
-    private static final String LABEL = "ラベル";
-    private static final String LAST_MOVE = "最後の着手";
-    
-    private static final String PASS = "パス";
-    private static final String UNDO = "戻す";
-    private static final String SCORE = "スコア";
-    private static final String DONE = "終了";
-    
-    private static final String PLAYER_TO_PLAY = "次の着手";
-    private static final String PLAYER_TO_PLAY_BLACK = "黒";
-    private static final String PLAYER_TO_PLAY_WHITE = "白";
 
     private BoardPanel board;
     private PlayerInfoPanel bPlayerInfo;
@@ -98,22 +82,6 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         
         
         moveModeToggleButton.setSelected(true);
-        
-        settingBoardMenu.setText(SETTING_BOARD);
-        moveNumberCheckBoxMenuItem.setText(MOVE_NUMBER);
-        koCheckBoxMenuItem.setText(KO);
-        markCheckBoxMenuItem.setText(MARK);
-        labelCheckBoxMenuItem.setText(LABEL);
-        lastMoveCheckBoxMenuItem.setText(LAST_MOVE);
-        
-        plMenu.setText(PLAYER_TO_PLAY);
-        plBlackMenuItem.setText(PLAYER_TO_PLAY_BLACK);
-        plWhiteMenuItem.setText(PLAYER_TO_PLAY_WHITE);
-        
-        passButton.setText(PASS);
-        undoButton.setText(UNDO);
-        scoreButton.setText(SCORE);
-        doneButton.setText(DONE);
         
         board = new BoardPanel(goGame.getBoard());
         boardPanelBase.setLayout(new BorderLayout());
@@ -640,7 +608,8 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
             .addComponent(moveInfoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        undoButton.setText("Undo");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/resource/Resource"); // NOI18N
+        undoButton.setText(bundle.getString("Undo")); // NOI18N
         undoButton.setFocusPainted(false);
         undoButton.setFocusable(false);
         undoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -649,7 +618,6 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
             }
         });
 
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/resource/Resource"); // NOI18N
         passButton.setText(bundle.getString("Pass")); // NOI18N
         passButton.setFocusPainted(false);
         passButton.setFocusable(false);
@@ -659,14 +627,14 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
             }
         });
 
-        scoreButton.setText("Score");
+        scoreButton.setText(bundle.getString("Score")); // NOI18N
         scoreButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 scoreButtonActionPerformed(evt);
             }
         });
 
-        doneButton.setText("Done");
+        doneButton.setText(bundle.getString("Done")); // NOI18N
         doneButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 doneButtonActionPerformed(evt);
@@ -980,9 +948,9 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         editMenu.add(editNoTypeMenu);
         editMenu.add(jSeparator6);
 
-        plMenu.setText("Player to play");
+        plMenu.setText(bundle.getString("PlayerToPlay")); // NOI18N
 
-        plBlackMenuItem.setText("Black");
+        plBlackMenuItem.setText(bundle.getString("Black")); // NOI18N
         plBlackMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 plBlackMenuItemActionPerformed(evt);
@@ -990,7 +958,7 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         });
         plMenu.add(plBlackMenuItem);
 
-        plWhiteMenuItem.setText("White");
+        plWhiteMenuItem.setText(bundle.getString("White")); // NOI18N
         plWhiteMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 plWhiteMenuItemActionPerformed(evt);
@@ -1051,10 +1019,10 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
 
         settingMenu.setText(bundle.getString("Setting")); // NOI18N
 
-        settingBoardMenu.setText("Board");
+        settingBoardMenu.setText(bundle.getString("View")); // NOI18N
 
         moveNumberCheckBoxMenuItem.setSelected(true);
-        moveNumberCheckBoxMenuItem.setText("Move Number");
+        moveNumberCheckBoxMenuItem.setText(bundle.getString("MoveNumber")); // NOI18N
         moveNumberCheckBoxMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 moveNumberCheckBoxMenuItemActionPerformed(evt);
@@ -1063,7 +1031,7 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         settingBoardMenu.add(moveNumberCheckBoxMenuItem);
 
         koCheckBoxMenuItem.setSelected(true);
-        koCheckBoxMenuItem.setText("Ko");
+        koCheckBoxMenuItem.setText(bundle.getString("Ko")); // NOI18N
         koCheckBoxMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 koCheckBoxMenuItemActionPerformed(evt);
@@ -1072,7 +1040,7 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         settingBoardMenu.add(koCheckBoxMenuItem);
 
         markCheckBoxMenuItem.setSelected(true);
-        markCheckBoxMenuItem.setText("Mark");
+        markCheckBoxMenuItem.setText(bundle.getString("Mark")); // NOI18N
         markCheckBoxMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 markCheckBoxMenuItemActionPerformed(evt);
@@ -1081,7 +1049,7 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         settingBoardMenu.add(markCheckBoxMenuItem);
 
         labelCheckBoxMenuItem.setSelected(true);
-        labelCheckBoxMenuItem.setText("Label");
+        labelCheckBoxMenuItem.setText(bundle.getString("Label")); // NOI18N
         labelCheckBoxMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 labelCheckBoxMenuItemActionPerformed(evt);
@@ -1090,7 +1058,7 @@ public class SgfGoWindow extends javax.swing.JFrame implements GoGameListener, O
         settingBoardMenu.add(labelCheckBoxMenuItem);
 
         lastMoveCheckBoxMenuItem.setSelected(true);
-        lastMoveCheckBoxMenuItem.setText("Last Move");
+        lastMoveCheckBoxMenuItem.setText(bundle.getString("LastMove")); // NOI18N
         lastMoveCheckBoxMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lastMoveCheckBoxMenuItemActionPerformed(evt);
