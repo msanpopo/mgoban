@@ -27,7 +27,7 @@ import sgf.property.GameInfoProperty;
 
 public class AddGameInfoPropertyAction extends AbstractAction {
 
-    private static final String ADD_GAME_INFO = "追加";
+    private static final String ADD_GAME_INFO = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Add");
     private GoGame goGame;
 
     public AddGameInfoPropertyAction(GoGame goGame) {
