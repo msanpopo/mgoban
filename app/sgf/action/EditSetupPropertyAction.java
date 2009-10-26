@@ -17,7 +17,6 @@
  */
 package app.sgf.action;
 
-import app.sgf.*;
 import go.gui.SetupPropertyPanel;
 import go.GoGame;
 import java.awt.event.ActionEvent;
