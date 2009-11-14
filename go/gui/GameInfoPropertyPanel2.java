@@ -22,15 +22,6 @@ import sgf.property.GameInfoProperty;
 import sgf.property.PropertyId;
 
 public class GameInfoPropertyPanel2 extends javax.swing.JPanel {
-    private static final String MISC = "いろいろ";
-    private static final String CREDITS = "クレジット";
-    private static final String RESULT = "結果";
-    private static final String OPENING = "布石";
-    private static final String GAME_COMMENT = "コメント";
-    private static final String SOURCE = "出典";
-    private static final String ANNOTATOR = "注釈者";
-    private static final String USER = "入力者";
-    private static final String COPYRIGHT = "コピーライト";
     
     private GameInfoProperty prop;
 
@@ -38,16 +29,6 @@ public class GameInfoPropertyPanel2 extends javax.swing.JPanel {
         this.prop = prop;
         
         initComponents();
-        
-        miscLabel.setText(MISC);
-        creditsLabel.setText(CREDITS);
-        reLabel.setText(RESULT);
-        onLabel.setText(OPENING);
-        gcLabel.setText(GAME_COMMENT);
-        soLabel.setText(SOURCE);
-        anLabel.setText(ANNOTATOR);
-        usLabel.setText(USER);
-        cpLabel.setText(COPYRIGHT);
         
         reTextField.setText(prop.getString(PropertyId.RE));
         onTextField.setText(prop.getString(PropertyId.ON));
@@ -97,81 +78,65 @@ public class GameInfoPropertyPanel2 extends javax.swing.JPanel {
         soTextField = new javax.swing.JTextField();
         creditsLabel = new javax.swing.JLabel();
 
-        miscLabel.setFont(new java.awt.Font("Dialog", 1, 14));
-        miscLabel.setText("Misc");
+        miscLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/resource/Resource"); // NOI18N
+        miscLabel.setText(bundle.getString("Misc")); // NOI18N
 
         reLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        reLabel.setText("Result :");
+        reLabel.setText(bundle.getString("Result")); // NOI18N
 
         soLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        soLabel.setText("Source :");
+        soLabel.setText(bundle.getString("Source")); // NOI18N
 
         anLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        anLabel.setText("Annotator :");
+        anLabel.setText(bundle.getString("Annotator")); // NOI18N
 
         usLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        usLabel.setText("User :");
+        usLabel.setText(bundle.getString("User")); // NOI18N
 
         cpLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        cpLabel.setText("Copyright :");
+        cpLabel.setText(bundle.getString("Copyright")); // NOI18N
 
         onLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        onLabel.setText("Opening :");
+        onLabel.setText(bundle.getString("Opening")); // NOI18N
 
         gcLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        gcLabel.setText("Comment :");
+        gcLabel.setText(bundle.getString("Comment")); // NOI18N
 
         gcTextArea.setColumns(20);
         gcTextArea.setRows(3);
         jScrollPane1.setViewportView(gcTextArea);
 
-        creditsLabel.setFont(new java.awt.Font("Dialog", 1, 14));
-        creditsLabel.setText("Credits");
+        creditsLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        creditsLabel.setText(bundle.getString("Credits")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(miscLabel))
+                    .addComponent(miscLabel)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(reLabel))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(onLabel))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(gcLabel))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(soLabel))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(anLabel))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(usLabel))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(cpLabel)))
+                            .addComponent(reLabel)
+                            .addComponent(onLabel)
+                            .addComponent(gcLabel)
+                            .addComponent(soLabel)
+                            .addComponent(anLabel)
+                            .addComponent(usLabel)
+                            .addComponent(cpLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(cpTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(usTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(anTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(soTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                            .addComponent(onTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+                            .addComponent(cpTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+                            .addComponent(usTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+                            .addComponent(anTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+                            .addComponent(soTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+                            .addComponent(onTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
                             .addComponent(reTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(creditsLabel)))
+                    .addComponent(creditsLabel))
                 .addContainerGap())
         );
 

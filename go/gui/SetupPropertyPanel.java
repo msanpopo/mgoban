@@ -24,11 +24,9 @@ import sgf.property.SetupProperty;
 
 public class SetupPropertyPanel extends javax.swing.JPanel {
 
-    private static final String PLAYER_TO_PLAY = "次の着手";
-    
     private static final String NOT_SELECTED = "";
-    private static final String BLACK = "黒";
-    private static final String WHITE = "白";
+    private static final String BLACK = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Black");
+    private static final String WHITE = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("White");
 
     private SetupProperty prop;
 
@@ -42,10 +40,7 @@ public class SetupPropertyPanel extends javax.swing.JPanel {
 
         initComponents();
 
-        plLabel.setText(PLAYER_TO_PLAY);
-
         plComboBox.setModel(model);
-
 
         if (prop.hasProperty(PropertyId.PL)) {
             GoColor c = prop.getNextColor();
@@ -75,7 +70,8 @@ public class SetupPropertyPanel extends javax.swing.JPanel {
         plLabel = new javax.swing.JLabel();
         plComboBox = new javax.swing.JComboBox();
 
-        plLabel.setText("Player to play:");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/resource/Resource"); // NOI18N
+        plLabel.setText(bundle.getString("PlayerToPlay")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -85,7 +81,7 @@ public class SetupPropertyPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(plLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(plComboBox, 0, 112, Short.MAX_VALUE)
+                .addComponent(plComboBox, 0, 116, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

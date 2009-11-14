@@ -31,11 +31,11 @@ import sgf.property.GameInfoProperty;
 
 public class EditGameInfoPropertyAction extends AbstractAction {
 
-    private static final String OK = "OK";
-    private static final String EDIT_GAME_INFO = "編集";
+    private static final String OK = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("OK");
+    private static final String EDIT_GAME_INFO = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Edit");
     
-    private static final String NO1 = "その１";
-    private static final String NO2 = "その２";
+    private static final String NO1 = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("A");
+    private static final String NO2 = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("B");
     private GoGame goGame;
 
     public EditGameInfoPropertyAction(GoGame goGame) {

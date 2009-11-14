@@ -30,8 +30,8 @@ import sgf.property.NoTypeProperty;
 
 public class EditNoTypePropertyAction extends AbstractAction {
 
-    private static final String OK = "OK";
-    private static final String EDIT_NO_TYPE = "編集";
+    private static final String OK = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("OK");
+    private static final String EDIT_NO_TYPE = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Edit");
     private GoGame goGame;
 
     public EditNoTypePropertyAction(GoGame goGame) {
