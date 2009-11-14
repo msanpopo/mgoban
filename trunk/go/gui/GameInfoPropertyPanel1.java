@@ -22,23 +22,6 @@ import sgf.property.GameInfoProperty;
 import sgf.property.PropertyId;
 
 public class GameInfoPropertyPanel1 extends javax.swing.JPanel {
-    private static final String BLACK_PLAYER = "黒";
-    private static final String WHITE_PLAYER = "白";
-    private static final String RULE = "ルール";
-    private static final String GAME = "対局";
-    
-    private static final String NAME = "名前";
-    private static final String RANK = "ランク";
-    private static final String TEAM = "チーム";
-    private static final String HANDICAP = "置き石";
-    private static final String KOMI = "コミ";
-    private static final String TIME_LIMIT = "持ち時間";
-    private static final String OVERTIME = "時間方式";
-    private static final String GAME_NAME = "対局名";
-    private static final String PLACE = "場所";
-    private static final String DATE = "日時";
-    private static final String EVENT = "イベント名";
-    private static final String ROUND = "ラウンド";
     
     private GameInfoProperty prop;
     
@@ -46,27 +29,6 @@ public class GameInfoPropertyPanel1 extends javax.swing.JPanel {
         this.prop = prop;
         
         initComponents();
-        
-        blackPlayerLabel.setText(BLACK_PLAYER);
-        whitePlayerLabel.setText(WHITE_PLAYER);
-        ruleLabel.setText(RULE);
-        gameLabel.setText(GAME);
-        pbLabel.setText(NAME);
-        brLabel.setText(RANK);
-        btLabel.setText(TEAM);
-        pwLabel.setText(NAME);
-        wrLabel.setText(RANK);
-        wtLabel.setText(TEAM);
-        ruLabel.setText(RULE);
-        haLabel.setText(HANDICAP);
-        kmLabel.setText(KOMI);
-        tmLabel.setText(TIME_LIMIT);
-        otLabel.setText(OVERTIME);
-        gnLabel.setText(GAME_NAME);
-        pcLabel.setText(PLACE);
-        dtLabel.setText(DATE);
-        evLabel.setText(EVENT);
-        roLabel.setText(ROUND);
         
         pbTextField.setText(prop.getString(PropertyId.PB));
         brTextField.setText(prop.getString(PropertyId.BR));
@@ -88,9 +50,6 @@ public class GameInfoPropertyPanel1 extends javax.swing.JPanel {
         dtTextField.setText(prop.getString(PropertyId.DT));
         evTextField.setText(prop.getString(PropertyId.EV));
         roTextField.setText(prop.getString(PropertyId.RO));
-        
-
-
     }
     
     public void done(){
@@ -156,41 +115,42 @@ public class GameInfoPropertyPanel1 extends javax.swing.JPanel {
         tmTextField = new javax.swing.JTextField();
         otTextField = new javax.swing.JTextField();
 
-        blackPlayerLabel.setFont(new java.awt.Font("Dialog", 1, 14));
-        blackPlayerLabel.setText("Black Player");
+        blackPlayerLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/resource/Resource"); // NOI18N
+        blackPlayerLabel.setText(bundle.getString("BlackPlayer")); // NOI18N
 
         btLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        btLabel.setText("Team :");
+        btLabel.setText(bundle.getString("Team")); // NOI18N
 
         pbLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        pbLabel.setText("Name :");
+        pbLabel.setText(bundle.getString("Name")); // NOI18N
 
         brLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        brLabel.setText("Rank :");
+        brLabel.setText(bundle.getString("Rank")); // NOI18N
 
-        ruleLabel.setFont(new java.awt.Font("Dialog", 1, 14));
-        ruleLabel.setText("Rule");
+        ruleLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        ruleLabel.setText(bundle.getString("Rule")); // NOI18N
 
         haLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        haLabel.setText("Handicap :");
+        haLabel.setText(bundle.getString("Handicap")); // NOI18N
 
         ruLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        ruLabel.setText("Rule :");
+        ruLabel.setText(bundle.getString("Rule")); // NOI18N
 
         kmLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        kmLabel.setText("Komi :");
+        kmLabel.setText(bundle.getString("Komi")); // NOI18N
 
         tmLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        tmLabel.setText("Time limit :");
+        tmLabel.setText(bundle.getString("TimeLimit")); // NOI18N
 
         otLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        otLabel.setText("Overtime :");
+        otLabel.setText(bundle.getString("Overtime")); // NOI18N
 
-        gameLabel.setFont(new java.awt.Font("Dialog", 1, 14));
-        gameLabel.setText("Game");
+        gameLabel.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        gameLabel.setText(bundle.getString("Game")); // NOI18N
 
         whitePlayerLabel.setFont(new java.awt.Font("Dialog", 1, 14));
-        whitePlayerLabel.setText("White Player");
+        whitePlayerLabel.setText(bundle.getString("WhitePlayer")); // NOI18N
 
         wtLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         wtLabel.setText("Team :");
@@ -199,19 +159,19 @@ public class GameInfoPropertyPanel1 extends javax.swing.JPanel {
         wrLabel.setText("Rank :");
 
         gnLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        gnLabel.setText("Game name :");
+        gnLabel.setText(bundle.getString("GameName")); // NOI18N
 
         pcLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        pcLabel.setText("Place :");
+        pcLabel.setText(bundle.getString("Place")); // NOI18N
 
         dtLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        dtLabel.setText("Date :");
+        dtLabel.setText(bundle.getString("Date")); // NOI18N
 
         evLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        evLabel.setText("Event :");
+        evLabel.setText(bundle.getString("Event")); // NOI18N
 
         roLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        roLabel.setText("Round :");
+        roLabel.setText(bundle.getString("Round")); // NOI18N
 
         pwLabel.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         pwLabel.setText("Name :");
@@ -295,7 +255,6 @@ public class GameInfoPropertyPanel1 extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(whitePlayerLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(pwTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -327,11 +286,9 @@ public class GameInfoPropertyPanel1 extends javax.swing.JPanel {
                         .addComponent(gameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(gnTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(gnLabel)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(gnTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(gnLabel))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(25, 25, 25)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)

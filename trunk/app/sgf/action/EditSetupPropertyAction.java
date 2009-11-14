@@ -29,8 +29,8 @@ import sgf.property.SetupProperty;
 
 public class EditSetupPropertyAction extends AbstractAction {
 
-    private static final String OK = "OK";
-    private static final String EDIT_SETUP = "編集";
+    private static final String OK = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("OK");
+    private static final String EDIT_SETUP = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Edit");
     private GoGame goGame;
 
     public EditSetupPropertyAction(GoGame goGame) {

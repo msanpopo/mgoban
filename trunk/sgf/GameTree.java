@@ -602,18 +602,20 @@ public class GameTree{
         }
     }
         
-    public void addGameInfoProperty(GameInfoProperty gip) {
+    public boolean addGameInfoProperty(GameInfoProperty gip) {
         if(current.hasGameInfoProperty()){
-            return;
+            return false;
         }
         
         
         if(current.pathHasGameInfoNode()){
-            JOptionPane.showMessageDialog(null, "パス上に既に対局情報が存在するため実行できません。");
+
+            return false;
         }else{
             current.setGameInfoProperty(gip);
+            fireNodeStateChanged();
+            return true;
         }
-        fireNodeStateChanged();
     }
     
     public GoNode searchAncestor(GoVertex vertex){

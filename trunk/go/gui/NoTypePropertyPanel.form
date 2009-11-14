@@ -26,8 +26,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="nTextField" pref="350" max="32767" attributes="0"/>
-                          <Component id="jScrollPane1" alignment="0" pref="350" max="32767" attributes="0"/>
+                          <Component id="nTextField" pref="354" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" pref="354" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -87,14 +87,18 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="nLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Node Name:"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="app/resource/Resource.properties" key="NodeName" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="nTextField">
     </Component>
     <Component class="javax.swing.JLabel" name="cLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Comment:"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="app/resource/Resource.properties" key="Comment" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -114,7 +118,9 @@
     </Container>
     <Component class="javax.swing.JLabel" name="annotationLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Annotation:"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="app/resource/Resource.properties" key="Annotation" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="annotationComboBox">
@@ -126,14 +132,18 @@
     </Component>
     <Component class="javax.swing.JLabel" name="vLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Estimated Score:"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="app/resource/Resource.properties" key="EstimatedScore" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="vTextField">
     </Component>
     <Component class="javax.swing.JLabel" name="hoLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Hot spot:"/>
+        <Property name="text" type="java.lang.String" editor="org.netbeans.modules.i18n.form.FormI18nStringEditor">
+          <ResourceString bundle="app/resource/Resource.properties" key="HotSpot" replaceFormat="java.util.ResourceBundle.getBundle(&quot;{bundleNameSlashes}&quot;).getString(&quot;{key}&quot;)"/>
+        </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="hoComboBox">

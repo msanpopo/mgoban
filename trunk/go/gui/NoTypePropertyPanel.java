@@ -22,16 +22,10 @@ import sgf.property.NoTypeProperty;
 import sgf.property.PositionAnnotation;
 
 public class NoTypePropertyPanel extends javax.swing.JPanel {
-
-    private static final String NODE_NAME = "ノード名";
-    private static final String COMMENT = "コメント";
-    private static final String ANNOTATION = "形勢";
-    private static final String HOTSPOT = "マーク";
-    private static final String VALUE = "予想スコア";
     
     private static final String HOTSPOT_NOT_SELECTED = "";
-    private static final String HOTSPOT_1 = "見どころ";
-    private static final String HOTSPOT_2 = "最大の見どころ";
+    private static final String HOTSPOT_1 = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("HotSpot1");
+    private static final String HOTSPOT_2 = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("HotSpot2");
     private NoTypeProperty prop;
 
     public NoTypePropertyPanel(NoTypeProperty prop) {
@@ -43,12 +37,6 @@ public class NoTypePropertyPanel extends javax.swing.JPanel {
         }
 
         initComponents();
-
-        nLabel.setText(NODE_NAME);
-        cLabel.setText(COMMENT);
-        annotationLabel.setText(ANNOTATION);
-        hoLabel.setText(HOTSPOT);
-        vLabel.setText(VALUE);
 
         annotationComboBox.setModel(model);
 
@@ -120,19 +108,20 @@ public class NoTypePropertyPanel extends javax.swing.JPanel {
         hoLabel = new javax.swing.JLabel();
         hoComboBox = new javax.swing.JComboBox();
 
-        nLabel.setText("Node Name:");
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("app/resource/Resource"); // NOI18N
+        nLabel.setText(bundle.getString("NodeName")); // NOI18N
 
-        cLabel.setText("Comment:");
+        cLabel.setText(bundle.getString("Comment")); // NOI18N
 
         cTextArea.setColumns(20);
         cTextArea.setRows(5);
         jScrollPane1.setViewportView(cTextArea);
 
-        annotationLabel.setText("Annotation:");
+        annotationLabel.setText(bundle.getString("Annotation")); // NOI18N
 
-        vLabel.setText("Estimated Score:");
+        vLabel.setText(bundle.getString("EstimatedScore")); // NOI18N
 
-        hoLabel.setText("Hot spot:");
+        hoLabel.setText(bundle.getString("HotSpot")); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -147,8 +136,8 @@ public class NoTypePropertyPanel extends javax.swing.JPanel {
                             .addComponent(nLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)))
+                            .addComponent(nTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)

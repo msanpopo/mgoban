@@ -21,6 +21,7 @@ import go.GoGame;
 import java.awt.event.ActionEvent;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.JOptionPane;
 import sgf.GameTree;
 import sgf.GoNode;
 import sgf.property.GameInfoProperty;
@@ -28,6 +29,8 @@ import sgf.property.GameInfoProperty;
 public class AddGameInfoPropertyAction extends AbstractAction {
 
     private static final String ADD_GAME_INFO = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Add");
+    private static final String ALREADY_EXIST = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("AlreadyExist");
+
     private GoGame goGame;
 
     public AddGameInfoPropertyAction(GoGame goGame) {
@@ -41,6 +44,9 @@ public class AddGameInfoPropertyAction extends AbstractAction {
         GoNode node = goGame.getGameTree().getCurrentNode();
         if (node.hasGameInfoProperty()) {
             return; // 既にあった
+        } else if(node.pathHasGameInfoNode()){
+            JOptionPane.showMessageDialog(null, ALREADY_EXIST);
+            return;
         } else {
             GameTree tree = goGame.getGameTree();
             GameInfoProperty gip = new GameInfoProperty();
