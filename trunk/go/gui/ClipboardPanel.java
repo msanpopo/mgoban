@@ -40,6 +40,7 @@ public class ClipboardPanel extends javax.swing.JPanel {
         sgfTextArea = new javax.swing.JTextArea();
 
         sgfTextArea.setColumns(20);
+        sgfTextArea.setLineWrap(true);
         sgfTextArea.setRows(5);
         jScrollPane1.setViewportView(sgfTextArea);
 
