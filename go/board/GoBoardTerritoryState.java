@@ -457,8 +457,8 @@ public class GoBoardTerritoryState {
         double bPoint = 0.0;
         double wPoint = 0.0;
         
-        String BLACK = "黒";
-        String WHITE = "白";
+        String BLACK = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Black");
+        String WHITE = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("White");
         
         StringBuilder str = new StringBuilder();
         if(komi > 0){
@@ -478,11 +478,13 @@ public class GoBoardTerritoryState {
         }
         
         if(bPoint > wPoint){
-            str.append(BLACK).append("の ").append(bPoint - wPoint).append(" 目勝ち");
+            str.append(BLACK).append(java.util.ResourceBundle.getBundle("app/resource/Resource").getString("WinPoint1"));
+            str.append(" ").append(bPoint - wPoint).append(" ").append(java.util.ResourceBundle.getBundle("app/resource/Resource").getString("WinPoint2"));
         }else if(bPoint == wPoint){
-            str.append("Draw.");
+            str.append(java.util.ResourceBundle.getBundle("app/resource/Resource").getString("DRAW."));
         }else{
-            str.append(WHITE).append("の ").append(wPoint - bPoint).append(" 目勝ち");
+            str.append(WHITE).append(java.util.ResourceBundle.getBundle("app/resource/Resource").getString("WinPoint1"));
+            str.append(" ").append(bPoint - wPoint).append(" ").append(java.util.ResourceBundle.getBundle("app/resource/Resource").getString("WinPoint2"));
         }
         return str.toString();
     }

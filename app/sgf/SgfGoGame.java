@@ -32,11 +32,10 @@ import gtp.GtpEngine;
 import javax.swing.JOptionPane;
 
 public class SgfGoGame extends GoGame{
-    private static final String BLACK = "黒";
-    private static final String WHITE = "白";
-    private static final String NO = "の";
-    private static final String TIME_OVER = "時間切れ";
-    private static final String WIN = "勝ち";
+    private static final String BLACK = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Black");
+    private static final String WHITE = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("White");
+    private static final String TIME_OVER = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("TimeOver");
+    private static final String WIN = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Win");
     
     private GameController gameController;
     private ScoringController scoringController;
@@ -97,11 +96,11 @@ public class SgfGoGame extends GoGame{
     public void clockTimeOver(GoClock clock, GoColor color) {
         StringBuilder msg = new StringBuilder();
         if(color.isBlack()){
-            msg.append(BLACK).append(NO).append(TIME_OVER).append("\n");
-            msg.append(WHITE).append(NO).append(WIN);
+            msg.append(BLACK).append(" ").append(TIME_OVER).append("\n");
+            msg.append(WHITE).append(" ").append(WIN);
         }else{
-            msg.append(WHITE).append(NO).append(TIME_OVER).append("\n");
-            msg.append(BLACK).append(NO).append(WIN);
+            msg.append(WHITE).append(" ").append(TIME_OVER).append("\n");
+            msg.append(BLACK).append(" ").append(WIN);
         }
         
                 

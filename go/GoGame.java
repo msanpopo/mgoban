@@ -34,12 +34,13 @@ import sgf.property.MoveProperty;
 
 public class GoGame implements GameTreeListener, ComponentListener, GoClockListener{
     
-    private static final String DO_SCORING = "死んだ石をクリックした後、終了ボタンを押してください。";
+    private static final String DO_SCORING = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("DoScoring");
     
-    private static final String BLACK = "黒";
-    private static final String WHITE = "白";
-    private static final String RESULT_RESIGN = " の中押し勝ち";
-    
+    private static final String BLACK = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Black");
+    private static final String WHITE = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("White");
+    private static final String RESULT_RESIGN1 = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Resigned1");
+    private static final String RESULT_RESIGN2 = java.util.ResourceBundle.getBundle("app/resource/Resource").getString("Win");
+
     private JFrame owner;
     
     protected GoBoard board;
@@ -97,9 +98,9 @@ public class GoGame implements GameTreeListener, ComponentListener, GoClockListe
     
     public void showResignDialog(GoColor winner){
         if(winner == GoColor.BLACK){
-            JOptionPane.showMessageDialog(null, BLACK + RESULT_RESIGN);
+            JOptionPane.showMessageDialog(null, WHITE +" " + RESULT_RESIGN1 + "\n" + BLACK + RESULT_RESIGN2);
         }else{
-            JOptionPane.showMessageDialog(null, WHITE + RESULT_RESIGN);
+            JOptionPane.showMessageDialog(null, BLACK +" " + RESULT_RESIGN1 + "\n" + WHITE + RESULT_RESIGN2);
         }
     }
     
