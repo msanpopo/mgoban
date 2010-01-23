@@ -63,13 +63,16 @@ public class SgfEditor extends GoPlayer implements GoOperator, EditOperator, Sco
         operationPanel.setOperator(this, editOperation);
     }
     
+    @Override
     public void opponentMove(GoMove move){}
     
+    @Override
     public void doScoring(ScoringController con) {
         scoringController = con;
         operationPanel.setOperator(this, scoringOperation);
     }
     
+    @Override
     public void stopScoring() {
         operationPanel.setOperator(null, nullOperation);
         scoringController = null;

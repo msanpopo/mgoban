@@ -78,9 +78,24 @@ public class GoBoardTerritoryState {
     public void toggleDeadStoneGroup(GoVertex v){
         int x = v.getX();
         int y = v.getY();
-        ArrayList<Field> group = getGroup(x, y);
-        for(Field f : group){
-            f.toggleDead();
+
+        //ArrayList<Field> group = getGroup(x, y);
+        if(territory[x][y].isStone() == false){
+            return;
+        }
+
+        GoColor c;
+        if(territory[x][y].isBlack()){
+            c = GoColor.WHITE;
+        }else{
+            c = GoColor.BLACK;
+        }
+        
+        ArrayList<Field> space = getSpace(x, y, c);
+        for(Field f : space){
+            if(f.isStone()){
+                f.toggleDead();
+            }
         }
         
         checkTerritory();
@@ -210,7 +225,48 @@ public class GoBoardTerritoryState {
         }
         return g;
     }
-    
+
+    /*
+     * 指定された座標を起点に、指定された色で囲まれた範囲の座標をかえす。
+     * もう一方の色の石はないものと考える。
+     */
+    private ArrayList<Field> getSpace(int x, int y, GoColor c){
+        Field f = territory[x][y];
+
+        ArrayList<Field> group = new ArrayList<Field>();
+
+
+        if(f.isColor(c) == false){
+            boolean[][] b = new boolean[boardSize + 2][boardSize + 2];
+
+            group = getSpaceRecur(x ,y, c, b, group);
+        }else{
+            // 起点が指定色の場合は、空の範囲をかえす
+        }
+
+        return group;
+    }
+
+    private ArrayList<Field> getSpaceRecur(int x, int y, GoColor c, boolean[][] b, ArrayList<Field> g){
+        if(b[x][y] == true){		// 既に調べた場所なら追加の石なし
+            return g;
+        }
+//        System.out.println("getSpaceRecur:" + x + ":" + y + " " + c);
+
+        b[x][y] = true;
+
+        Field f = territory[x][y];
+        if(f.isEdge() == false && f.isColor(c) == false){
+            g.add(f);
+
+            g = getSpaceRecur(x - 1, y, c, b, g);
+            g = getSpaceRecur(x + 1, y, c, b, g);
+            g = getSpaceRecur(x, y - 1, c, b, g);
+            g = getSpaceRecur(x, y + 1, c, b, g);
+        }
+        return g;
+    }
+
     public void checkTerritory(){
         System.out.println("checkTerritory");
         
