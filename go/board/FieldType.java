@@ -69,7 +69,8 @@ public enum FieldType {
             return false;
         }
     }
-    
+
+    // 着手か置き石かは関係なく色だけで判断
     public boolean isBlack(){
         if(this == BLACK || this == ADD_BLACK){
             return true;
@@ -77,7 +78,8 @@ public enum FieldType {
             return false;
         }
     }
-    
+
+    // 着手か置き石かは関係なく色だけで判断
     public boolean isWhite(){
         if(this == WHITE || this == ADD_WHITE){
             return true;

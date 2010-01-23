@@ -99,7 +99,7 @@ public class Field{
             return isWhite();
         }
     }
-    
+
     public boolean isStone(){
         if(isBlack() || isWhite()){
             return true;
