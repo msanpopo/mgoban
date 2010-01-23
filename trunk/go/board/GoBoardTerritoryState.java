@@ -1,6 +1,6 @@
 /*
  *  mGoban - GUI for Go
- *  Copyright (C) 2007, 2009  sanpo
+ *  Copyright (C) 2007, 2009, 2010  sanpo
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -534,12 +534,12 @@ public class GoBoardTerritoryState {
         }
         
         if(bPoint > wPoint){
-            str.append(BLACK).append(java.util.ResourceBundle.getBundle("app/resource/Resource").getString("WinPoint1"));
+            str.append(BLACK).append(" ").append(java.util.ResourceBundle.getBundle("app/resource/Resource").getString("WinPoint1"));
             str.append(" ").append(bPoint - wPoint).append(" ").append(java.util.ResourceBundle.getBundle("app/resource/Resource").getString("WinPoint2"));
         }else if(bPoint == wPoint){
             str.append(java.util.ResourceBundle.getBundle("app/resource/Resource").getString("DRAW."));
         }else{
-            str.append(WHITE).append(java.util.ResourceBundle.getBundle("app/resource/Resource").getString("WinPoint1"));
+            str.append(WHITE).append(" ").append(java.util.ResourceBundle.getBundle("app/resource/Resource").getString("WinPoint1"));
             str.append(" ").append(bPoint - wPoint).append(" ").append(java.util.ResourceBundle.getBundle("app/resource/Resource").getString("WinPoint2"));
         }
         return str.toString();
