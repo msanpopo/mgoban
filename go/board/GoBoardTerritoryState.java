@@ -540,7 +540,7 @@ public class GoBoardTerritoryState {
             str.append(java.util.ResourceBundle.getBundle("app/resource/Resource").getString("DRAW."));
         }else{
             str.append(WHITE).append(" ").append(java.util.ResourceBundle.getBundle("app/resource/Resource").getString("WinPoint1"));
-            str.append(" ").append(bPoint - wPoint).append(" ").append(java.util.ResourceBundle.getBundle("app/resource/Resource").getString("WinPoint2"));
+            str.append(" ").append(wPoint - bPoint).append(" ").append(java.util.ResourceBundle.getBundle("app/resource/Resource").getString("WinPoint2"));
         }
         return str.toString();
     }
